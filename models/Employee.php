@@ -2,16 +2,16 @@
     Class Employee {
 
         private $connect;
-        private $table = 'Employee';
+        private $table = 'employees';
 
         //Employee Properties/Attributes
-        public $id;
+        public $employeeid;
         public $name;
         public $country;
         public $city;
-        public $postal_code;
-        public $street_name;
-        public $store_num;
+        public $postalCode;
+        public $streetName;
+        public $storeNum;
 
         //Constructor with DB
         public function __construct($db) {
@@ -22,18 +22,18 @@
         public function readEmployee() {
             // Create query
             $query = 'SELECT 
-                e.id,
+                e.employeeId,
                 e.name,
                 e.country,
                 e.city,
-                e.postal_code,
-                e.street_name,
-                e.store_num
+                e.postalCode,
+                e.streetName,
+                e.storeNum
             FROM
-                ' . $this->table . ' e ';
+                ' . $this->table . ' e';
 
             //Prepare statement
-            $stmt = $this->conn->prepare($query);
+            $stmt = $this->connect->prepare($query);
 
             // Execute Query
             $stmt->execute();
