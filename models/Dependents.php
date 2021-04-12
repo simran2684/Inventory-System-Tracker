@@ -1,12 +1,12 @@
 <?php
-    class Post{
+    class Dependents{
         private $connect;
-        private $table = 'Dependents';
+        private $table = 'dependents';
 
         //Post properties
         public $employeeid;
         public $name;
-        public $phone_number;
+        public $phoneNum;
 
         //DB constructor
         public function _constructor($db) {
@@ -14,12 +14,12 @@
         }
 
         //Get Dependents
-        public function readDependents(){
+        public function read(){
             //Create query
             $query = 'Select
                 d.employeeid,
                 d.name,
-                d.phone_number
+                d.phoneNum
             FROM
                 ' .$this->table . ' d ';
 
