@@ -21,19 +21,19 @@
     // Check if any employees
     if ($num > 0) {
         $employee_arr = array();
-        $employee_arr['data'] = array;
+        $employee_arr['data'] = array();
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
 
             $employee_item = array(
-                'id' => $id,
-                'name' => $name,
-                'country' => $country,
-                'city' => $city,
-                'postal_code' => $postal_code,
-                'street_name' => $street_name,
-                'store_num' => $store_num;
+                'EmployeeID' => $employeeId,
+                'Name' => $name,
+                'Country' => $country,
+                'City' => $city,
+                'PostalCode' => $postalCode,
+                'StreetName' => $streetName,
+                'storeNum' => $storeNum
             );
 
             // Push to "data"
@@ -41,10 +41,10 @@
         }
 
         // Turn to JSON and Output
-        echo json_encode($posts_arr);
+        echo json_encode($employee_arr);
     } else {
         // No employees
         echo json_encode(
-            array('message' => 'No Employees Found');
-        )
+            array('message' => 'No Employees Found')
+        );
     }
