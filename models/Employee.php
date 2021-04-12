@@ -86,9 +86,10 @@
                 SET
                     employeeId = :employeeId,
                     name = :name,
+                    country = :country,
                     city = :city,
-                    postalCode = :postalCode
-                    streetName = :streetName
+                    postalCode = :postalCode,
+                    streetName = :streetName,
                     storeNum = :storeNum';
                     
             // Prepare Statment
@@ -97,6 +98,7 @@
             //"Clean data"
             $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
             $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->country = htmlspecialchars(strip_tags($this->country));
             $this->city = htmlspecialchars(strip_tags($this->city));
             $this->postalCode = htmlspecialchars(strip_tags($this->postalCode));
             $this->streetName = htmlspecialchars(strip_tags($this->streetName));
@@ -106,21 +108,23 @@
             // Bind data
             $stmt->bindParam(':employeeId', $this->employeeId);
             $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':country', $this->country);
             $stmt->bindParam(':city', $this->city);
             $stmt->bindParam(':postalCode', $this->postalCode);
             $stmt->bindParam(':streetName', $this->streetName);
             $stmt->bindParam(':storeNum', $this->storeNum);
 
-            // Execute query
+            //Execute query
             if($stmt->execute()) {
-                //Print success message if function executes.
-                printf("Successfully created employee.");
                 return true;
             } else {
-                //Print error if something goes wrong.
-                printf("Error creating employee.");
                 return false;
             }
+            // } else {
+            //     //Print error if something goes wrong.
+            //     printf("Error creating employee.");
+            //     return false;
+            // }
         }
 
 
