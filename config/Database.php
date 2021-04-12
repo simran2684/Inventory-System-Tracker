@@ -2,9 +2,9 @@
     class Database {
         // Database Parameters
         private $host = 'localhost';
-        private $db_name = 'inventoryTracker';
+        private $db_name = 'inventorytracker';
         private $username = 'root';
-        private $password = 'abc123';
+        private $password = '';
         private $connect;
 
         //Connect
@@ -12,7 +12,7 @@
             $this->connect = null;
 
             try {
-                $this->connect = new PDO('mysql:host=' . $this->host . ';dbname= ' . $this->db_name, $this->username, $this->password);
+                $this->connect = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
 
                 $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
