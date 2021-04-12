@@ -20,6 +20,7 @@
 
     $employee->employeeId = $data->employeeId;
     $employee->name = $data->name;
+    $employee->country = $data->country;
     $employee->city = $data->city;
     $employee->postalCode = $data->postalCode;
     $employee->streetName = $data->streetName;
@@ -29,7 +30,9 @@
     if ($employee->createEmployee()) {
         echo json_encode(
             array('message' => 'Employee Created')
-        ) else {
+        );
+    } else {
+        echo json_encode(
             array('message' => 'Employee Not Created')
-        }
+        );
     }
