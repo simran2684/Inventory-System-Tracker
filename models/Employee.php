@@ -40,4 +40,88 @@
 
             return $stmt;
         }
+
+
+        // Get a single employee
+        public function getSingleEmployee() {
+            $query = 'SELECT
+                e.employeeId,
+                e.name,
+                e.country,
+                e.city,
+                e.postalCode,
+                e.streetName,
+                e.storeNum
+            FROM
+                ' . $this->table . ' e
+            WHERE
+                e.employeeId = ?
+            LIMIT 0,1';
+
+            // Prepare statement
+            $stmt = $this->connect->prepare($query);
+
+            // Bind id
+            $stmt->bindParam(1, $this->employeeId);
+
+            // Execute Query
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Set properties
+            $this->name = $row['name'];
+            $this->country = $row['country'];
+            $this->city = $row['city'];
+            $this->postalCode = $row['postalCode'];
+            $this->streetName = $row['streetName'];
+            $this->storeNum = $row['storeNum'];
+        }
+
+
+        // Create Employee
+        public function createEmployee() {
+            //Create query
+            $query = 'INSERT INTO ' . $this->table . ' 
+                SET
+                    employeeId = :employeeId,
+                    name = :name,
+                    city = :city,
+                    postalCode = :postalCode
+                    streetName = :streetName
+                    storeNum = :storeNum';
+                    
+            // Prepare Statment
+            $stmt = $this->connect->prepare($query);
+
+            //"Clean data"
+            $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
+            $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->city = htmlspecialchars(strip_tags($this->city));
+            $this->postalCode = htmlspecialchars(strip_tags($this->postalCode));
+            $this->streetName = htmlspecialchars(strip_tags($this->streetName));
+            $this->storeNum = htmlspecialchars(strip_tags($this->storeNum));
+
+
+            // Bind data
+            $stmt->bindParam(':employeeId', $this->employeeId);
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':city', $this->city);
+            $stmt->bindParam(':postalCode', $this->postalCode);
+            $stmt->bindParam(':streetName', $this->streetName);
+            $stmt->bindParam(':storeNum', $this->storeNum);
+
+            // Execute query
+            if($stmt->execute()) {
+                //Print success message if function executes.
+                printf("Successfully created employee.")
+                return true;
+            } else {
+                //Print error if something goes wrong.
+                printf("Error creating employee.")
+                return false;
+            }
+        }
+
+
     }
