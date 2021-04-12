@@ -114,11 +114,11 @@
             // Execute query
             if($stmt->execute()) {
                 //Print success message if function executes.
-                printf("Successfully created employee.")
+                printf("Successfully created employee.");
                 return true;
             } else {
                 //Print error if something goes wrong.
-                printf("Error creating employee.")
+                printf("Error creating employee.");
                 return false;
             }
         }
