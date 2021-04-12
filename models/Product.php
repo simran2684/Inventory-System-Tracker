@@ -1,18 +1,18 @@
 <?php
     class Post{
         private $conn;
-        private $table = 'Product';
+        private $table = 'product';
 
         // Post Properties
-        public $product_num;
+        public $productNum;
         public $name;
         public $brand;
         public $category;
         public $quantity;
         public $weight;
-        public $inventory_num;
+        public $inventoryNum;
         public $location;
-        public $storage_temp;
+        public $storageTemp;
 
         // Constructor with DB
         public function __construct($db){
@@ -22,10 +22,15 @@
         // Get Posts
         public function read(){
             // Create query 
-            $query = 'SELECT p.product_num, 
+            $query = 'SELECT p.productNum, 
             p.name,
             p.brand,
-            p.category
+            p.category, 
+            p.quantity,
+            p.weight,
+            p.inventoryNum,
+            p.location,
+            p.storageTemp
             FROM
             ' . $this->table . ' p';
 
