@@ -21,7 +21,7 @@
                 d.name,
                 d.phoneNum
             FROM
-                ' .$this->table . ' d ';
+                ' . $this->table . ' d';
 
             //preparing statement
             $stmt = $this->connect->prepare($query);
