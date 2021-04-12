@@ -120,12 +120,71 @@
             } else {
                 return false;
             }
-            // } else {
-            //     //Print error if something goes wrong.
-            //     printf("Error creating employee.");
-            //     return false;
-            // }
         }
 
+
+        public function updateEmployee() {
+            $query = 'UPDATE ' . $this->table . '
+                SET
+                    name = :name,
+                    country = :country,
+                    city = :city,
+                    postalCode = :postalCode,
+                    streetName = :streetName,
+                    storeNum = :storeNum
+                WHERE
+                    employeeId = :employeeId';
+
+            // Prepare statement
+            $stmt = $this->connect->prepare($query);
+
+            // "Clean Data
+            $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
+            $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->country = htmlspecialchars(strip_tags($this->country));
+            $this->city = htmlspecialchars(strip_tags($this->city));
+            $this->postalCode = htmlspecialchars(strip_tags($this->postalCode));
+            $this->streetName = htmlspecialchars(strip_tags($this->streetName));
+            $this->storeNum = htmlspecialchars(strip_tags($this->storeNum));
+
+            // Bind data
+            $stmt->bindParam(':employeeId', $this->employeeId);
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':country', $this->country);
+            $stmt->bindParam(':city', $this->city);
+            $stmt->bindParam(':postalCode', $this->postalCode);
+            $stmt->bindParam(':streetName', $this->streetName);
+            $stmt->bindParam(':storeNum', $this->storeNum);
+
+            //Execute query
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        // Delete an employee
+        public function deleteEmployee() {
+            // Create Query
+            $query = 'DELETE FROM ' . $this->table . ' WHERE employeeId = :employeeId';
+
+            // Prepare statement
+            $stmt = $this->connect->prepare($query);
+
+            // "Clean" data
+            $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
+
+            // Bind data
+            $stmt->bindParam(':employeeId', $this->employeeId);
+
+            // Execute Query
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
     }
