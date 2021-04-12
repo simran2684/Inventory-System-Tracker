@@ -14,7 +14,7 @@ $db = $database->connect();
 // Instantiate dependents object
 $dependents = new Dependents($db);
 
-// Product query
+// Dependents query
 $result = $dependents->read();        // result from the read function
 // Get row count
 $num = $result->rowCount();
