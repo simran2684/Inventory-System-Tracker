@@ -25,23 +25,23 @@ if($num > 0){
     $product_arr = array();
     $product_arr['data'] = array();
 
-    while($row = $result->fetch(PDO::Fetch_ASSOC)){
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
         extract($row);
 
         $product_item = array(
-            'product_num' => $product_num,
-            'name' => $name,
-            'brand' => $brand,
-            'category' => $category,
-            'quantity' => $quantity,
-            'weight' => $weight
-            'inventory_num' => $inventory_num,
-            'location' => $location,
-            'storage_temp' => $torage_temp
+            'ProductNum' => $productNum,
+            'Name' => $name,
+            'Brand' => $brand,
+            'Category' => $category,
+            'Quantity' => $quantity,
+            'Weight' => $weight,
+            'InventoryNum' => $inventoryNum,
+            'Location' => $location,
+            'StorageTemp' => $storageTemp
         );
 
         // Push to "data"
-        array_push($posts_arr['data'], $product_item);
+        array_push($product_arr['data'], $product_item);
     }
 
     // Turn to JSON & output 
@@ -49,6 +49,6 @@ if($num > 0){
 } else{
     // No products
     echo json_encode(
-        array('message' => 'No Posts Found');
-    )
+        array('message' => 'No Posts Found')
+    );
 }
