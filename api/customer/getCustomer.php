@@ -14,7 +14,7 @@
     $customer = new Customer($db);
 
     // Get customer query
-    $result = $customer->read();
+    $result = $customer->readCustomer();
     // Get row count
     $num = $result->rowCount();
 
