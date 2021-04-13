@@ -17,7 +17,7 @@
             //Create query
             $query = 'Select
                 c.customerNum,
-                d.paymentMethod,
+                c.paymentMethod
                 
             FROM
                 ' . $this->table . ' c';
