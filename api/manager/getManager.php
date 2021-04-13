@@ -14,7 +14,7 @@
     $manager = new Manager($db);
 
     // Get manager query
-    $result = $manager->read();
+    $result = $manager->readManager();
     // Get row count
     $num = $result->rowCount();
 
@@ -28,7 +28,7 @@
 
             $manager_item = array(
                 'MgrSSN' => $mgrSSN,
-                'ID' => $ID,
+                'ID' => $id,
                 'StoreLocation' => $storeLocation
             );
 
