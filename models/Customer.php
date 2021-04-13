@@ -8,7 +8,7 @@
         public $paymentMethod;
         
         //DB constructor
-        public function _construct($db) {
+        public function __construct($db) {
             $this->connect = $db;
         }
 
@@ -66,7 +66,7 @@
             $query = 'INSERT INTO ' . $this->table . ' 
                 SET
                     customerNum = :customerNum,
-                    paymentMethod = :paymentMethod,
+                    paymentMethod = :paymentMethod';
                    
                     
             // Prepare Statment
