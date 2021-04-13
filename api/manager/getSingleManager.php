@@ -22,7 +22,7 @@
     // Create array
     $manager_arr = array(
         'MgrSSN' => $manager->mgrSSN,
-        'ID' => $manager->ID,
+        'ID' => $manager->id,
         'StoreLocation' => $manager->storeLocation
         
     );

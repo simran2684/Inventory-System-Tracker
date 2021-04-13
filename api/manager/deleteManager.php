@@ -21,7 +21,7 @@
     $manager->mgrSSN = $data->mgrSSN;
 
     // Delete manager$manager
-    if ($manager->deleteManagerr()) {
+    if ($manager->deleteManager()) {
         echo json_encode(
             array('message' => 'Manager Deleted')
         );
