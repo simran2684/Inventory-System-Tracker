@@ -19,8 +19,9 @@
             $this->connect = $db;
         }
 
+
         // Get Posts
-        public function read(){
+        public function getProducts(){
             // Create query 
             $query = 'SELECT p.productNum, 
             p.name,
@@ -85,4 +86,98 @@
 
         }
 
+         // Create Product
+         public function createProduct() {
+            //Create query
+            $query = 'INSERT INTO ' . $this->table . ' 
+                SET
+                    productNum = :productNum,
+                    name = :name,
+                    brand = :brand,
+                    category = :category,
+                    quantity = :quantity,
+                    weight = :weight,
+                    inventoryNum = :inventoryNum,
+                    location = :location,
+                    storageTemp = :storageTemp';
+                    
+            // Prepare Statment
+            $stmt = $this->connect->prepare($query);
+
+            // Bind data
+            $stmt->bindParam(':productNum', $this->productNum);
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':brand', $this->brand);
+            $stmt->bindParam(':category', $this->category);
+            $stmt->bindParam(':quantity', $this->quantity);
+            $stmt->bindParam(':weight', $this->weight);
+            $stmt->bindParam(':inventoryNum', $this->inventoryNum);
+            $stmt->bindParam(':location', $this->location);
+            $stmt->bindParam(':storageTemp', $this->storageTemp);
+
+            //Execute query
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function updateProduct() {
+            $query = 'UPDATE ' . $this->table . '
+                SET
+                    productNum = :productNum,
+                    name = :name,
+                    brand = :brand,
+                    category = :category,
+                    quantity = :quantity,
+                    weight = :weight,
+                    inventoryNum = :inventoryNum,
+                    location = :location,
+                    storageTemp = :storageTemp
+                WHERE
+                    productNum = :productNum';
+
+            // Prepare statement
+            $stmt = $this->connect->prepare($query);
+           
+            // Bind data
+            $stmt->bindParam(':productNum', $this->productNum);
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':brand', $this->brand);
+            $stmt->bindParam(':category', $this->category);
+            $stmt->bindParam(':quantity', $this->quantity);
+            $stmt->bindParam(':weight', $this->weight);
+            $stmt->bindParam(':inventoryNum', $this->inventoryNum);
+            $stmt->bindParam(':location', $this->location);
+            $stmt->bindParam(':storageTemp', $this->storageTemp);
+            
+            //Execute query
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function deleteProduct() {
+            // Create Query
+            $query = 'DELETE FROM ' . $this->table . ' WHERE productNum = :productNum';
+
+            // Prepare statement
+            $stmt = $this->connect->prepare($query);
+
+            // "Clean" data
+            $this->productNum = htmlspecialchars(strip_tags($this->productNum));
+
+            // Bind data
+            $stmt->bindParam(':productNum', $this->productNum);
+
+            // Execute Query
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
