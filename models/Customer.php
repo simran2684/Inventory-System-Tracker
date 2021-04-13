@@ -1,5 +1,5 @@
 <?php
-    class Customer{
+    Class Customer{
         private $connect;
         private $table = 'customer';
 
@@ -8,24 +8,24 @@
         public $paymentMethod;
         
         //DB constructor
-        public function _constructor($db) {
-            $this -> connect = $db;
+        public function _construct($db) {
+            $this->connect = $db;
         }
 
         //Get Customer
         public function readCustomer(){
             //Create query
-            $query = 'Select
+            $query = 'SELECT
                 c.customerNum,
                 c.paymentMethod
                 
             FROM
                 ' . $this->table . ' c';
 
-            //preparing statement
+            //Prepare statement
             $stmt = $this->connect->prepare($query);
 
-            //Execute the query
+            //Execute Query
             $stmt->execute();
 
             return $stmt; 
@@ -33,7 +33,7 @@
 
         // Get a single customer
         public function getSingleCustomer() {
-            $query = 'Select
+            $query = 'SELECT
                 c.customerNum,
                 c.paymentMethod
             FROM
