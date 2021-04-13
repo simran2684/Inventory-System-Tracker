@@ -19,6 +19,7 @@
             //Create query
             $query = 'Select
                 m.mgrSSN,
+                m.ID,
                 m.storeLocation
                 
             FROM
