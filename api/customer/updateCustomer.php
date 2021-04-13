@@ -20,6 +20,7 @@
 
     // Set the num for the update
     $customer->customerNum = $data->customerNum;
+   
     $customer->paymentMethod = $data->paymentMethod;
     
     // Update customer
