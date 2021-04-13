@@ -13,7 +13,7 @@
         }
 
         //Get Customer
-        public function read(){
+        public function readCustomer(){
             //Create query
             $query = 'Select
                 c.customerNum,
