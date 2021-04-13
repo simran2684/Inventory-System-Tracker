@@ -1,45 +1,45 @@
 <?php
-    class Manager{
+    Class Manager{
         private $connect;
         private $table = 'manager';
 
         //manager properties
         public $mgrSSN;
-        public $ID;
+        public $id;
         public $storeLocation;
            
         
         //DB constructor
-        public function _constructor($db) {
-            $this -> connect = $db;
+        public function __construct($db) {
+            $this->connect = $db;
         }
 
         //Get Manager
-        public function read(){
-            //Create query
-            $query = 'Select
+        public function readManager(){
+            $query = 'SELECT 
                 m.mgrSSN,
-                m.ID,
+                m.id,
                 m.storeLocation
-                
             FROM
                 ' . $this->table . ' m';
 
-            //preparing statement
+            //Prepare statement
             $stmt = $this->connect->prepare($query);
 
-            //Execute the query
+            // Execute Query
             $stmt->execute();
 
-            return $stmt; 
+            return $stmt;
         }
+    
+
+        
 
 // Get a single manager
         public function getSingleManager() {
             $query = 'SELECT
-                $query = 'Select
                 m.mgrSSN,
-                m.ID,
+                m.id,
                 m.storeLocation
             FROM
                 ' . $this->table . ' m
@@ -59,7 +59,7 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // Set properties
-            $this->ID = $row['ID'];
+            $this->id = $row['id'];
             $this->storeLocation = $row['storeLocation'];
            
         }
@@ -71,7 +71,7 @@
             $query = 'INSERT INTO ' . $this->table . ' 
                 SET
                     mgrSSN = :mgrSSN,
-                    ID = :ID,
+                    id = :id,
                     storeLocation = :storeLocation';
                   
                     
@@ -80,14 +80,14 @@
 
             //"Clean data"
             $this->mgrSSN = htmlspecialchars(strip_tags($this->mgrSSN));
-            $this->ID = htmlspecialchars(strip_tags($this->ID));
+            $this->id = htmlspecialchars(strip_tags($this->id));
             $this->storeLocation = htmlspecialchars(strip_tags($this->storeLocation));
            
 
 
             // Bind data
             $stmt->bindParam(':mgrSSN', $this->mgrSSN);
-            $stmt->bindParam(':ID', $this->ID);
+            $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':storeLocation', $this->storeLocation);
            
             //Execute query
@@ -102,7 +102,7 @@
         public function updateManager() {
             $query = 'UPDATE ' . $this->table . '
                 SET
-                    ID = :ID,
+                    id = :id,
                     storeLocation = :storeLocation,
                    
                 WHERE
@@ -113,13 +113,13 @@
 
             // "Clean Data
             $this->mgrSSN = htmlspecialchars(strip_tags($this->mgrSSN));
-            $this->ID = htmlspecialchars(strip_tags($this->ID));
+            $this->ID = htmlspecialchars(strip_tags($this->id));
             $this->storeLocation = htmlspecialchars(strip_tags($this->storeLocation));
            
 
             // Bind data
             $stmt->bindParam(':mgrSSN', $this->mgrSSN);
-            $stmt->bindParam(':ID', $this->ID);
+            $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':storeLocation', $this->storeLocation);
             
 
@@ -153,7 +153,5 @@
                 return false;
             }
         }
-
-
 
     }
