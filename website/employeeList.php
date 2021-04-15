@@ -3,8 +3,8 @@
   header('Content-Type: application/json');
   header('Content-Type: text/html');
 
-  include_once 'config/Database.php';
-  include_once 'models/Employee.php';
+  include_once '../config/Database.php';
+  include_once '../models/Employee.php';
 
   $database = new Database();
   $db = $database->connect();
@@ -15,7 +15,7 @@
   // Get employee query
   $result = $employee->readEmployee();
 
-  $row = $result->fetch(PDO::FETCH_ASSOC);
+  // $row = $result->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
 
 <body>
   <div>
-    <button class = "backButton" onclick="window.location.href = 'employeeMain.html'">Back</button>
+    <button class = "backButton" onclick="window.location.href = 'employeeMain.php'">Back</button>
   </div>
 
   <div id = 'table'>
@@ -46,7 +46,7 @@
       <tbody>
       <?php
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-          extract($row);
+          // extract($row);
         
       ?>
         <tr>
@@ -59,7 +59,7 @@
           <td class="attribute"><?php echo $row['storeNum']?></td>
           <td> 
             <div>
-               <button class="btns2" onclick="window.location.href = 'updateEmployee.html'">Update</button>
+               <button class="btns2" onclick="window.location.href = 'employeeUpdate.php'">Update</button>
             </div>
           </td>
           <td> 
@@ -69,25 +69,6 @@
           </td> 
         </tr>
         <?php } ?>
-        <tr>
-          <td class="attribute">7654</td>
-          <td class="attribute">Mark Jacob</td>
-          <td class="attribute">Canada</td>
-          <td class="attribute">Ottawa</td>
-          <td class="attribute">T5V 7G5</td>
-          <td class="attribute">34 Some Street</td>
-          <td class="attribute">1</td>
-          <td> 
-            <div>
-               <button class="btns2" onclick="window.location.href = 'updateEmployee.html'">Update</button>
-            </div>
-          </td>
-           <td> 
-            <div>
-               <button class="btns2" onclick="window.location.href = 'test.html'">Delete</button>
-            </div>
-          </td>
-        </tr>
       </tbody>
       
     </table>
