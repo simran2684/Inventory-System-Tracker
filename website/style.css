@@ -1,0 +1,98 @@
+h1 {
+  text-align: center;
+  font-size: 30px;
+  font-family: Arial;
+  margin-bottom: 30px;
+}
+
+.btns {
+  margin:0 auto;
+  display:block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 19px;
+  width: 110px;
+  font-family: Arial;
+  background-color:whitesmoke;
+  
+}
+
+.centerText{
+  text-align: center;
+  margin-top: 20px;
+  transform: translateX(20);
+}
+
+
+body {
+background-color: #D1EEEE;
+}
+
+.form_l {
+  margin-top: 10px;
+  width: 100px;
+  clear: left;
+  display: inline-block;
+  text-align: right;
+}
+
+.form_2 {
+  margin-top: 10px;
+  width: 125px;
+  clear: left;
+  display: inline-block;
+  text-align: right;
+}
+
+.form_3 {
+  margin-top: 10px;
+  width: 250px;
+  clear: left;
+  display: inline-block;
+  text-align: right;
+}
+
+.employeeTable {
+  column-width: 200px;
+}
+
+.inventoryTable{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scheduleTable {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btns2 {
+  margin:0 auto;
+  display:block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 10px;
+  width: 50px;
+  font-family: Arial;
+  background-color:whitesmoke;
+}
+
+.backButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+}
+
+.attribute {
+border: 1px solid black;
+text-align: center;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+th{
+  border: 1px solid black;
+}
