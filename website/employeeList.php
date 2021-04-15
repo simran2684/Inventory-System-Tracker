@@ -64,7 +64,8 @@
           </td>
           <td> 
            <div>
-               <button class="btns2" onclick="window.location.href = 'test.html'">Delete</button>
+              <a href="employeeDelete.php?employeeId=<?php echo $row["employeeId"];?>">Delete</a>
+               <!-- <button class="btns2" onclick="window.location.href = 'employeeDelete.php?employeeId='<?php echo['employeeId']?>">Delete</button> -->
             </div>
           </td> 
         </tr>
