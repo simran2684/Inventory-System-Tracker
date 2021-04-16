@@ -29,6 +29,7 @@
             $employee_item = array(
                 'EmployeeID' => $employeeId,
                 'Name' => $name,
+                'position' => $position,
                 'Country' => $country,
                 'City' => $city,
                 'PostalCode' => $postalCode,

@@ -23,6 +23,7 @@
     $employee_arr = array(
         'EmployeeId' => $employee->employeeId,
         'Name' => $employee->name,
+        'position' => $employee->position,
         'Country' => $employee->country,
         'City' => $employee->city,
         'PostalCode' => $employee->postalCode,
