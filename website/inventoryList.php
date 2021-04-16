@@ -27,7 +27,7 @@
 
 <body>
   <div>
-    <button class = "backButton" onclick="window.location.href = 'index.html'">Back</button>
+    <button class = "backButton" onclick="window.location.href = 'idex.html'">Back</button>
   </div>
 
   <div id = 'table'>
@@ -50,10 +50,11 @@
           <td class="attribute"><?php echo $row['productNum'];?></td>
           <td class="attribute"><?php echo $row['name']?></td>
           <td class="attribute"><?php echo $row['brand']?></td>
-          <td class="attribute" contenteditable = "true"><?php echo $row['quantity']?></td>
+          <td class="attribute"><?php echo $row['quantity']?></td>
           <td> 
             <div>
-               <button class="btns2" onclick="window.location.href = 'inventoryList.php'">Update Quantity</button>
+              <a href="updateInventory.php?productNum=<?php echo $row["productNum"];?>">Update</a>
+               <!-- <button class="btns2" onclick="window.location.href = 'employeeUpdate.php'">Update</button> -->
             </div>
           </td>
         </tr>
@@ -68,3 +69,5 @@
 
 
 </html>
+
+
