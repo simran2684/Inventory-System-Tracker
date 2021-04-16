@@ -18,16 +18,11 @@
     // Set the id for the delete
     $employee->employeeId = $_GET['employeeId'];
 
-    echo 'Hello world';
-    echo $_GET['employeeId'];
     // Delete employee
-    if ($employee->deleteEmployee()) {
-        echo json_encode(
-            array('message' => 'Employee Deleted')
-        );
-        //header('location: employeeList.php');
-    } else {
-        echo json_encode(
-            array('message' => 'Unable to delete employee')
-        );
+    try {
+        $employee->deleteEmployee(); 
+        echo "Employee Deleted";
+        header('location: employeeList.php');
+    } catch (exception $e) {
+        echo "Unable to delete employee";
     }

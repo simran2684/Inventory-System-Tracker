@@ -21,7 +21,7 @@
 		<button class="btns" onclick="window.location.href = 'employeeList.php'">View Employees</button>
     </div>
     <div>
-      <button class="btns" onclick="window.location.href = 'createEmployee.php'">Create Employee</button>
+      <button class="btns" onclick="window.location.href = 'employeeCreate.php'">Create Employee</button>
     </div>
   </body>
 </html>

@@ -59,7 +59,8 @@
           <td class="attribute"><?php echo $row['storeNum']?></td>
           <td> 
             <div>
-               <button class="btns2" onclick="window.location.href = 'employeeUpdate.php'">Update</button>
+              <a href="employeeUpdate.php?employeeId=<?php echo $row["employeeId"];?>">Update</a>
+               <!-- <button class="btns2" onclick="window.location.href = 'employeeUpdate.php'">Update</button> -->
             </div>
           </td>
           <td> 
