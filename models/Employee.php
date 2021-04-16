@@ -7,6 +7,7 @@
         //Employee Properties/Attributes
         public $employeeid;
         public $name;
+        public $position;
         public $country;
         public $city;
         public $postalCode;
@@ -24,6 +25,7 @@
             $query = 'SELECT 
                 e.employeeId,
                 e.name,
+                e.position,
                 e.country,
                 e.city,
                 e.postalCode,
@@ -47,6 +49,7 @@
             $query = 'SELECT
                 e.employeeId,
                 e.name,
+                e.position,
                 e.country,
                 e.city,
                 e.postalCode,
@@ -71,6 +74,7 @@
 
             // Set properties
             $this->name = $row['name'];
+            $this->position = $row['position'];
             $this->country = $row['country'];
             $this->city = $row['city'];
             $this->postalCode = $row['postalCode'];
@@ -86,6 +90,7 @@
                 SET
                     employeeId = :employeeId,
                     name = :name,
+                    position = :position,
                     country = :country,
                     city = :city,
                     postalCode = :postalCode,
@@ -108,6 +113,7 @@
             // Bind data
             $stmt->bindParam(':employeeId', $this->employeeId);
             $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':position', $this->position);
             $stmt->bindParam(':country', $this->country);
             $stmt->bindParam(':city', $this->city);
             $stmt->bindParam(':postalCode', $this->postalCode);
@@ -128,6 +134,7 @@
                 SET
                     name = :name,
                     country = :country,
+                    position = :position,
                     city = :city,
                     postalCode = :postalCode,
                     streetName = :streetName,
@@ -150,6 +157,7 @@
             // Bind data
             $stmt->bindParam(':employeeId', $this->employeeId);
             $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':position', $this->position);
             $stmt->bindParam(':country', $this->country);
             $stmt->bindParam(':city', $this->city);
             $stmt->bindParam(':postalCode', $this->postalCode);
