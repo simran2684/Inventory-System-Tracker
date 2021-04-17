@@ -6,20 +6,20 @@
         //Post properties
         public $employeeid;
         public $name;
-        public $phoneNum;
+        public $phoneNumber;
 
         //DB constructor
-        public function _constructor($db) {
+        public function __construct($db) {
             $this -> connect = $db;
         }
 
         //Get Dependents
-        public function read(){
+        public function getDependents(){
             //Create query
-            $query = 'Select
+            $query = 'SELECT
                 d.employeeid,
                 d.name,
-                d.phoneNum
+                d.phoneNumber
             FROM
                 ' . $this->table . ' d';
 
@@ -31,5 +31,35 @@
 
             return $stmt; 
         }
+
+         // Get a single employee
+         public function getSingleDependents() {
+            $query = 'SELECT
+                d.employeeid,
+                d.name,
+                d.phoneNumber
+               
+            FROM
+                ' . $this->table . ' d
+            WHERE
+                d.employeeid = ?
+            LIMIT 0,1';
+
+            // Prepare statement
+            $stmt = $this->connect->prepare($query);
+
+            // Bind id
+            $stmt->bindParam(1, $this->employeeid);
+
+            // Execute Query
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Set properties
+            $this->name = $row['name'];
+            $this->phoneNumber = $row['phoneNumber'];
+        }
+
 
     }
