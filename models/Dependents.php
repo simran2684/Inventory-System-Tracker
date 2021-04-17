@@ -61,7 +61,35 @@
             $this->phoneNumber = $row['phoneNumber'];
         }
         
-        
+        public function createDependent() {
+            $query = 'INSERT INTO ' . $this->table . ' 
+            SET
+                employeeId = :employeeId,
+                name = :name,
+                phoneNumber = :phoneNumber';
+                
+            // Prepare Statment
+            $stmt = $this->connect->prepare($query);
+
+            //"Clean data"
+            $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
+            $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->phoneNumber = htmlspecialchars(strip_tags($this->phoneNumber));
+
+
+            // Bind data
+            $stmt->bindParam(':employeeId', $this->employeeId);
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':phoneNumber', $this->phoneNumber);
+
+            //Execute query
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
         // Delete an employee
         public function deleteDependent() {
