@@ -49,7 +49,7 @@
             $stmt = $this->connect->prepare($query);
 
             // Bind id
-            $stmt->bindParam(1, $this->employeeid);
+            $stmt->bindParam(1, $this->employeeId);
 
             // Execute Query
             $stmt->execute();
