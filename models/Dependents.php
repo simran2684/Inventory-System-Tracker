@@ -4,7 +4,7 @@
         private $table = 'dependents';
 
         //Post properties
-        public $employeeid;
+        public $employeeId;
         public $name;
         public $phoneNumber;
 
@@ -14,10 +14,10 @@
         }
 
         //Get Dependents
-        public function getDependents(){
+        public function read(){
             //Create query
-            $query = 'SELECT
-                d.employeeid,
+            $query = 'Select
+                d.employeeId,
                 d.name,
                 d.phoneNumber
             FROM
@@ -32,34 +32,26 @@
             return $stmt; 
         }
 
-         // Get a single employee
-         public function getSingleDependents() {
-            $query = 'SELECT
-                d.employeeid,
-                d.name,
-                d.phoneNumber
-               
-            FROM
-                ' . $this->table . ' d
-            WHERE
-                d.employeeid = ?
-            LIMIT 0,1';
+        // Delete an employee
+        public function deleteDependent() {
+            // Create Query
+            $query = 'DELETE FROM ' . $this->table . ' WHERE employeeId = :employeeId';
 
             // Prepare statement
             $stmt = $this->connect->prepare($query);
 
-            // Bind id
-            $stmt->bindParam(1, $this->employeeid);
+            // "Clean" data
+            $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
+
+            // Bind data
+            $stmt->bindParam(':employeeId', $this->employeeId);
 
             // Execute Query
-            $stmt->execute();
-
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Set properties
-            $this->name = $row['name'];
-            $this->phoneNumber = $row['phoneNumber'];
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
         }
-
 
     }
