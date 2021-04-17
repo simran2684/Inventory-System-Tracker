@@ -22,8 +22,8 @@
     $employee->employeeId = $data->employeeId;
 
     $employee->name = $data->name;
-    $employee->position = $data->position;
     $employee->country = $data->country;
+    $employee->position = $data->position;
     $employee->city = $data->city;
     $employee->postalCode = $data->postalCode;
     $employee->streetName = $data->streetName;
