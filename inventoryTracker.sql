@@ -37,7 +37,7 @@ CREATE TABLE manager(
     ID varchar(6) NOT NULL,
     StoreLocation varchar(50),
     PRIMARY KEY (MgrSSN),
-    FOREIGN KEY(ID) REFERENCES employees (EmployeeID)
+    FOREIGN KEY(ID) REFERENCES employees (EmployeeID) ON DELETE CASCADE
 );
 
 INSERT INTO `manager` (`MgrSSN`, `ID`, `StoreLocation`)
@@ -51,7 +51,7 @@ CREATE TABLE clerk(
     YearsEmployed int,
     HourlyWage float,
     PRIMARY KEY (ID),
-    FOREIGN KEY(MgrSSN) REFERENCES manager (MgrSSN)
+    FOREIGN KEY(MgrSSN) REFERENCES manager (MgrSSN) ON DELETE CASCADE
 );
 
 INSERT INTO `clerk` (`MgrSSN`, `ID`, `HourlyWage`, `YearsEmployed`)
@@ -64,7 +64,7 @@ CREATE TABLE administrator(
     ID varchar(6) NOT NULL,
     StoreLocation varchar(50),
     PRIMARY KEY (AdminSSN),
-    FOREIGN KEY(ID) REFERENCES employees (EmployeeID)
+    FOREIGN KEY(ID) REFERENCES employees (EmployeeID) ON DELETE CASCADE
 );
 
 INSERT INTO `administrator` (`AdminSSN`, `ID`, `StoreLocation`)
@@ -74,7 +74,7 @@ VALUES('444444444', '423097', 'Calgary');
 CREATE TABLE phoneNumber (
     EmployeeID varchar(6) NOT NULL,
     PhoneNum varchar(10),
-	FOREIGN KEY (EmployeeID) REFERENCES employees (EmployeeID)
+	FOREIGN KEY (EmployeeID) REFERENCES employees (EmployeeID) ON DELETE CASCADE
 );
 
 INSERT INTO `phoneNumber`(`EmployeeID`,`PhoneNum`) VALUES
@@ -92,7 +92,7 @@ CREATE TABLE dependents (
     Name varchar(50),
     PhoneNumber varchar(50),
 	PRIMARY KEY (EmployeeID, Name),
-    FOREIGN KEY(EmployeeID) REFERENCES employees(EmployeeID)
+    FOREIGN KEY(EmployeeID) REFERENCES employees(EmployeeID) ON DELETE CASCADE
 );
 
 INSERT INTO `dependents` (`EmployeeID`, `Name`, `PhoneNumber`) VALUES
@@ -159,7 +159,7 @@ INSERT INTO `deliveries` (`InvoiceNum`, `DateOrdered`, `TimeOrdered`, `DateSched
 CREATE TABLE schedule (
     ScheduleNum int(100) NOT NULL,
     DeliveryInvoiceNum int(100) NOT NULL,
-    PRIMARY KEY(ScheduleNum)
+    PRIMARY KEY(ScheduleNum) 
 );
 
 INSERT INTO `schedule` (`ScheduleNum`, `DeliveryInvoiceNum`) VALUES
@@ -199,8 +199,8 @@ CREATE TABLE setsPrice(
     AdminSSN varchar(10),
     Price double,
     PRIMARY KEY (ProductNum, AdminSSN),
-    FOREIGN KEY(ProductNum) REFERENCES product (ProductNum),
-    FOREIGN KEY(AdminSSN) REFERENCES administrator (AdminSSN)
+    FOREIGN KEY(ProductNum) REFERENCES product (ProductNum) ON DELETE CASCADE,
+    FOREIGN KEY(AdminSSN) REFERENCES administrator (AdminSSN) ON DELETE CASCADE
 );
 
 INSERT INTO `setsPrice` (`ProductNum`, `AdminSSN`, `Price`)
@@ -215,7 +215,7 @@ CREATE TABLE buy(
     CustomerNum int NOT NULL,
     Price double,
     PRIMARY KEY (ProductNum, CustomerNum),
-    FOREIGN KEY(ProductNum) REFERENCES product (ProductNum),
+    FOREIGN KEY(ProductNum) REFERENCES product (ProductNum) ON DELETE CASCADE,
     FOREIGN KEY(CustomerNum) REFERENCES customer (CustomerNum)
 );
 
@@ -230,8 +230,8 @@ CREATE TABLE addProduct(
 MgrSSN varchar(10),
 ProductNum varchar(8),
 PRIMARY KEY(MgrSSN, ProductNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager(MgrSSN),
-FOREIGN KEY (ProductNum) REFERENCES product(ProductNum)
+FOREIGN KEY (MgrSSN) REFERENCES manager(MgrSSN) ON DELETE CASCADE,
+FOREIGN KEY (ProductNum) REFERENCES product(ProductNum) ON DELETE CASCADE
 );
 
 INSERT INTO `addProduct` (`MgrSSN`, `ProductNum`) VALUES
@@ -245,8 +245,8 @@ CREATE TABLE updateProduct(
 MgrSSN varchar(10),
 ProductNum varchar(8),
 PRIMARY KEY(MgrSSN, ProductNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager (MgrSSN),
-FOREIGN KEY (ProductNum) REFERENCES product (ProductNum)
+FOREIGN KEY (MgrSSN) REFERENCES manager (MgrSSN) ON DELETE CASCADE,
+FOREIGN KEY (ProductNum) REFERENCES product (ProductNum) ON DELETE CASCADE
 );
 
 INSERT INTO `updateProduct` (`MgrSSN`, `ProductNum`) VALUES
@@ -259,7 +259,7 @@ CREATE TABLE removeProduct(
 MgrSSN varchar(10),
 ProductNum varchar(8),
 PRIMARY KEY(MgrSSN, ProductNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager (MgrSSN)
+FOREIGN KEY (MgrSSN) REFERENCES manager (MgrSSN) ON DELETE CASCADE
 );
 
 INSERT INTO `removeProduct` (`MgrSSN`, `ProductNum`) VALUES
@@ -271,8 +271,8 @@ CREATE TABLE clerkViewsSchedule(
 ClerkID varchar(6) NOT NULL,
 ScheduleNum int NOT NULL, 
 PRIMARY KEY (ClerkID, ScheduleNum),
-FOREIGN KEY (ClerkID) REFERENCES employees(EmployeeID),
-FOREIGN KEY (ScheduleNum) REFERENCES schedule(ScheduleNum)
+FOREIGN KEY (ClerkID) REFERENCES employees(EmployeeID) ON DELETE CASCADE,
+FOREIGN KEY (ScheduleNum) REFERENCES schedule(ScheduleNum) ON DELETE CASCADE
 );
 
 INSERT INTO `clerkViewsSchedule` (ClerkID, ScheduleNum) VALUES
@@ -283,8 +283,8 @@ CREATE TABLE mgrViewsSchedule(
 MgrSSN varchar(10) NOT NULL,
 ScheduleNum int NOT NULL,
 PRIMARY KEY (MgrSSN, ScheduleNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager(MgrSSN),
-FOREIGN KEY (ScheduleNum) REFERENCES schedule(ScheduleNum)
+FOREIGN KEY (MgrSSN) REFERENCES manager(MgrSSN) ON DELETE CASCADE,
+FOREIGN KEY (ScheduleNum) REFERENCES schedule(ScheduleNum) ON DELETE CASCADE
 );
 
 INSERT INTO `mgrViewsSchedule` (`MgrSSN`, `ScheduleNum`) VALUES
