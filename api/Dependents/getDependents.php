@@ -15,7 +15,7 @@ $db = $database->connect();
 $dependents = new Dependents($db);
 
 // Dependents query
-$result = $dependents->read();        // result from the read function
+$result = $dependents->getDependents();        // result from the read function
 // Get row count
 $num = $result->rowCount();
 
