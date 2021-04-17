@@ -29,9 +29,9 @@ if($num > 0){
         extract($row);
 
         $dep_item = array(
-            'EmployeeID' => $employeeid,
+            'EmployeeID' => $employeeId,
             'Name' => $name,
-            'PhoneNumber' => $phoneNum
+            'PhoneNumber' => $phoneNumber
            );
 
         // Push to "data"
