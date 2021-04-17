@@ -46,20 +46,15 @@
         
       ?>
         <tr>
-          <td class="attribute"><?php echo $row['employeeid'];?></td>
+          <td class="attribute"><?php echo $row['employeeId'];?></td>
           <td class="attribute"><?php echo $row['name']?></td>
           <td class="attribute"><?php echo $row['phoneNumber']?></td>
           <td> 
             <div>
-              <a href="updateDependents.php?employeeid=<?php echo $row["employeeid"];?>">Update</a>
+              <a href="updateDependents.php?employeeId=<?php echo $row["employeeId"];?>">Update</a>
             </div>
           </td>
-          <td> 
-           <div>
-              <a href="employeeDelete.php?employeeId=<?php echo $row["employeeId"];?>">Delete</a>
-            </div>
-          </td>
-
+      
         </tr>
         <?php } ?>
       </tbody>
