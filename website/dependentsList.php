@@ -51,8 +51,11 @@
           <td class="attribute"><?php echo $row['phoneNumber']?></td>
           <td> 
             <div>
-              <a href="updateDependents.php?employeeId=<?php echo $row["employeeId"];?>">Update</a>
+              <a class="link_button" href="updateDependents.php?employeeId=<?php echo $row["employeeId"];?>">Update</a>
             </div>
+          </td>
+          <td>
+           <a href="dependentDelete.php?employeeId=<?php echo $row["employeeId"];?>">Delete</a>
           </td>
       
         </tr>
@@ -60,7 +63,7 @@
       </tbody>
       
     </table>
-    
+    <button class = "btns_l" width="100px" onclick="window.location.href = 'dependentCreate.php'">Add Dependents</button>
   </div>
 </body>
 
