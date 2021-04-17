@@ -36,6 +36,7 @@
         <tr>
           <th>EmployeeId</th>
           <th>Name</th>
+          <th>Position</th>
           <th>Country</th>
           <th>City</th>
           <th>Postal Code</th>
@@ -52,6 +53,7 @@
         <tr>
           <td class="attribute"><?php echo $row['employeeId'];?></td>
           <td class="attribute"><?php echo $row['name']?></td>
+          <td class="attribute"><?php echo $row['position']?></td>
           <td class="attribute"><?php echo $row['country']?></td>
           <td class="attribute"><?php echo $row['city']?></td>
           <td class="attribute"><?php echo $row['postalCode']?></td>
@@ -65,13 +67,7 @@
           </td>
           <td> 
            <div>
-              <a href="employeeDelete.php?employeeId=<?php echo $row["employeeId"];?>">Delete</a>
-               <!-- <button class="btns2" onclick="window.location.href = 'employeeDelete.php?employeeId='<?php echo['employeeId']?>">Delete</button> -->
-            </div>
-          </td>
-          <td> 
-           <div>
-              <a href="dependentsList.php?employeeId=<?php echo $row["employeeId"];?>">View Dependents</a>
+              <a href="employeeDelete.php?employeeId=<?php echo $row["employeeId"];?>&position=<?php echo $row["position"];?>">Delete</a>
                <!-- <button class="btns2" onclick="window.location.href = 'employeeDelete.php?employeeId='<?php echo['employeeId']?>">Delete</button> -->
             </div>
           </td> 

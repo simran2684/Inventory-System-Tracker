@@ -20,11 +20,12 @@
     // Instantiate employee object
     $employee = new Employee($db);
 
-    $employee->status = $_GET['position'];
+    $employee->employeeId = $_GET['employeeId'];
+    $employee->position = $_GET['position'];
 
     // Below is the check to delete position, but if we're deleting only clerks, we might not even need the check
     // and we can just delete the clerk from the table.
-    if ($employee->status == "Clerk") {
+    if ($employee->position == "Clerk") {
         $clerk = new Clerk($db);
         $clerk->id = $employee->employeeId;
         $clerk->deleteClerk();
@@ -40,19 +41,31 @@
     // }
     
     //Get the corresponding dependent, and then delete it.
-    $dependent= new Dependent($db);
-    $dependent->employeeid = $employee->employeeId;
-    $dependent->deleteDependent();
+    // $dependent= new Dependents($db);
+    // $dependent->employeeid = $_GET['employeeId'];
+    // try {
+    //     if($dependent->deleteDependent()){
+    //     echo "Dependent number Deleted";
+    //     }
+    // } catch (exception $e) {
+    //     echo $e->getMessage();
+    // }
 
-    // Get the corresponding phonenumber, and then delete it.
-    $p_num = new PhoneNumber($db);
-    $p_num->employeeId = $employee->employeeId;
-    $p_num->deleteNumber();
+    // // Get the corresponding phonenumber, and then delete it.
+    // $p_num = new PhoneNumber($db);
+    // $p_num->employeeId = $employee->employeeId;
+
+    // try {
+    //     $p_num->deleteNumber();
+    //     echo "Phone number Deleted";
+    // } catch (exception $e) {
+    //     echo $e->getMessage();
+    // }
 
     //Hopefully once these all delete nicely, then we can delete the employee without any trouble.
 
     // Set the id for the delete
-    $employee->employeeId = $_GET['employeeId'];
+    //$employee->employeeId = $_GET['employeeId'];
 
     // Delete employee
     try {
@@ -60,5 +73,5 @@
         echo "Employee Deleted";
         header('location: employeeList.php');
     } catch (exception $e) {
-        echo "Unable to delete employee";
+        echo $e->getMessage();
     }

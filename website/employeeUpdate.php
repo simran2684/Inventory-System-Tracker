@@ -42,6 +42,9 @@
           <label for = "name", class = "form_l" > Name: </label>
           <input type = "text" name = "name" required="" value=<?php echo $employee->name?>> <br>
 
+          <label for = "position", class = "form_l" > Position: </label>
+          <input type = "text" name = "position" required="" value=<?php echo $employee->position?>> <br>
+
           <label for = "country", class = "form_l" > Country: </label>
           <input type = "text" name = "country" required="" value=<?php echo $employee->country?>> <br>
 
@@ -65,6 +68,7 @@
 
             $employee->employeeId = $_GET['employeeId'];
             $employee->name = $_GET['name'];
+            $employee->name = $_GET['position'];
             $employee->country = $_GET['country'];
             $employee->city =  $_GET['city'];
             $employee->postalCode =  $_GET['postalCode'];
