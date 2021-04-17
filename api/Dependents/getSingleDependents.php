@@ -14,14 +14,14 @@
     $dp = new Dependents($db);
 
     // Get id
-    $dp->employeeid = isset($_GET['employeid']) ? $_GET['employeeid'] : die();
+    $dp->employeeId = isset($_GET['employeId']) ? $_GET['employeeId'] : die();
 
     // Call getSingleDependents method
     $dp->getSingleDependents();
 
     // Create array
     $dp_arr = array(
-        'EmployeeId' => $dp->employeeid,
+        'EmployeeId' => $dp->employeeId,
         'Name' => $dp->name,
         'PhoneNumber' => $dp->phoneNumber,
       
