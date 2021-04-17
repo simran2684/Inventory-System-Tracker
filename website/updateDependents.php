@@ -16,7 +16,7 @@
   // Instantiate dependents object
   $dependents = new Dependents($db);
 
-  $dependents->employeeid = isset($_GET['employeeid']) ? $_GET['employeeid'] : die();
+  $dependents->employeeId = isset($_GET['employeeId']) ? $_GET['employeeId'] : die();
 
   // Call  getSingleDependents method
   $dependents->getSingleDependents();
@@ -37,7 +37,7 @@
       <form class="centerText">
         <div>
           <label for = "id", class = "form_l" > EmployeeID: </label>
-          <input type = "text" name = "employeeid" required="" value=<?php echo $dependents->employeeid?>> <br>
+          <input type = "text" name = "employeeId" required="" value=<?php echo $dependents->employeeId?>> <br>
 
           <label for = "name", class = "form_l" > Name: </label>
           <input type = "text" name = "name" required="" value=<?php echo $dependents->name?>> <br>
@@ -51,7 +51,7 @@
           <?php
           if(array_key_exists("submit", $_GET)){
 
-            $dependents->employeeid = $_GET['employeeid'];
+            $dependents->employeeId = $_GET['employeeId'];
             $dependents->name = $_GET['name'];
             $dependents->phoneNumber = $_GET['phoneNumber'];
          
