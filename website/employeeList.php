@@ -68,6 +68,12 @@
               <a href="employeeDelete.php?employeeId=<?php echo $row["employeeId"];?>">Delete</a>
                <!-- <button class="btns2" onclick="window.location.href = 'employeeDelete.php?employeeId='<?php echo['employeeId']?>">Delete</button> -->
             </div>
+          </td>
+          <td> 
+           <div>
+              <a href="dependentsList.php?employeeId=<?php echo $row["employeeId"];?>">View Dependents</a>
+               <!-- <button class="btns2" onclick="window.location.href = 'employeeDelete.php?employeeId='<?php echo['employeeId']?>">Delete</button> -->
+            </div>
           </td> 
         </tr>
         <?php } ?>
