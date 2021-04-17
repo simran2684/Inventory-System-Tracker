@@ -22,7 +22,6 @@
   $product->getSingleProduct();
 ?>
 
-
 <html>
   <head>
   <meta charset="utf-8">
@@ -58,7 +57,6 @@
         
         <label for = "storageTemp", class = "form_2"> Storage Temperature: </label>
         <input type = "text" name="storageTemp" required="" value=<?php echo $product->storageTemp?>> <br>
-
 
         </div>
         <div>

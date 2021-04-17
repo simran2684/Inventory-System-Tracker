@@ -5,21 +5,21 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
     include_once '../config/Database.php';
-    include_once '../models/Employee.php';
+    include_once '../models/Product.php';
     
     //Connect the Database
     $database = new Database();
     $db = $database->connect();
 
-    // Instantiate employee object
-    $employee = new Employee($db);
+    // Instantiate product object
+    $product = new Product($db);
 
-    $employee->employeeId = $_GET['employeeId'];
+    $product->productNum = $_GET['productNum'];
 
     try {
-        $employee->deleteEmployee(); 
-        echo "Employee Deleted";
-        header('location: employeeList.php');
+        $product->deleteProduct(); 
+        echo "Product Deleted";
+        header('location: viewProducts.php');
     } catch (exception $e) {
         echo $e->getMessage();
     }

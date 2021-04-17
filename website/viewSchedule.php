@@ -48,7 +48,7 @@
            <td class="attribute"><?php echo $row['deliveryInvoiceNum'];?></td>
           <td> 
             <div>
-               <button class="btns2" onclick="window.location.href = 'productUpdate.php'">Update Quantity</button>
+               <button class="btns2" onclick="window.location.href = 'updateInventory.php'">Update Quantity</button>
             </div>
           </td>
         </tr>

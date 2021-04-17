@@ -27,7 +27,7 @@
 
 <body>
   <div>
-    <button class = "backButton" onclick="window.location.href = 'idex.html'">Back</button>
+    <button class = "backButton" onclick="window.location.href = 'index.html'">Back</button>
   </div>
 
   <div id = 'table'>

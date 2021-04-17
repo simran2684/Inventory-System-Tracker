@@ -56,14 +56,14 @@
            <td class="attribute"><?php echo $row['inventoryNum'];?></td>
            <td class="attribute"><?php echo $row['location'];?></td>
            <td class="attribute"><?php echo $row['storageTemp'];?></td> 
-           <td>
+           <td> 
             <div>
-               <button class="btns2" onclick="window.location.href = 'updateProduct.php'">Update</button>
+              <a href="updateProduct.php?productNum=<?php echo $row["productNum"];?>"?>Update</a>
             </div>
           </td>
           <td> 
            <div>
-               <button class="btns2">Delete</button>
+              <a href="updateProduct.php?productNum=<?php echo $row["productNum"];?>"?>Delete</a>
             </div>
           </td> 
         </tr>

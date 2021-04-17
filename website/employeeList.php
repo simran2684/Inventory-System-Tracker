@@ -61,19 +61,19 @@
           <td class="attribute"><?php echo $row['storeNum']?></td>
           <td> 
             <div>
-              <a href="employeeUpdate.php?employeeId=<?php echo $row["employeeId"];?>">Update</a>
+              <a class="link_button" href="employeeUpdate.php?employeeId=<?php echo $row["employeeId"];?>">Update</a>
                <!-- <button class="btns2" onclick="window.location.href = 'employeeUpdate.php'">Update</button> -->
             </div>
           </td>
           <td> 
            <div>
-              <a href="employeeDelete.php?employeeId=<?php echo $row["employeeId"];?>&position=<?php echo $row["position"];?>">Delete</a>
+              <a class="link_button" href="employeeDelete.php?employeeId=<?php echo $row["employeeId"];?>&position=<?php echo $row["position"];?>">Delete</a>
                <!-- <button class="btns2" onclick="window.location.href = 'employeeDelete.php?employeeId='<?php echo['employeeId']?>">Delete</button> -->
             </div>
           </td> 
            <td> 
            <div>
-              <a href="dependentsList.php?employeeId=<?php echo $row["employeeId"];?>">View Dependents</a>
+              <!-- <a class="link_button" href="dependentsList.php?employeeId=<?php echo $row["employeeId"];?>">View Dependents</a> -->
                <!-- <button class="btns2" onclick="window.location.href = 'employeeDelete.php?employeeId='<?php echo['employeeId']?>">Delete</button> -->
             </div>
           </td> 
@@ -83,6 +83,9 @@
       
     </table>
     
+    <div>
+    <button class = "btns_l" width="100px" onclick="window.location.href = 'dependentsList.php'">View Dependents</button>
+    </div>
   </div>
 </body>
 

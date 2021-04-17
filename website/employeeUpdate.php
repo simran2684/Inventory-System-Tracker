@@ -68,7 +68,7 @@
 
             $employee->employeeId = $_GET['employeeId'];
             $employee->name = $_GET['name'];
-            $employee->name = $_GET['position'];
+            $employee->position = $_GET['position'];
             $employee->country = $_GET['country'];
             $employee->city =  $_GET['city'];
             $employee->postalCode =  $_GET['postalCode'];
