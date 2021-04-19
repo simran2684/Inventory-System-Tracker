@@ -18,8 +18,8 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Set id
-    $cvs->ScheduleNum = $data->ScheduleNum;
-    $cvs->ClerkID = $data->ClerkID;
+    $cvs->scheduleNum = $data->scheduleNum;
+    $cvs->clerkID = $data->clerkID;
 
     // Delete cvs
     if ($cvs->deleteClerkViewsSchedule()) {

@@ -27,10 +27,10 @@
             extract($row);
 
             $clerk_item = array(
-                'MgrSSN' => $mgrSSN,
-                'ID' => $id,
-                'YearsEmployed' => $yearsEmployed,
-                'HourlyWage' => $hourlyWage
+                'mgrSSN' => $mgrSSN,
+                'id' => $id,
+                'yearsEmployed' => $yearsEmployed,
+                'hourlyWage' => $hourlyWage
             );
 
             // Push to "data"

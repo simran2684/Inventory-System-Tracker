@@ -18,8 +18,8 @@
     // Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
-    $cvs->ScheduleNum = $data->ScheduleNum;
-    $cvs->ClerkID = $data->ClerkID;
+    $cvs->scheduleNum = $data->scheduleNum;
+    $cvs->clerkID = $data->clerkID;
    
 
 

@@ -18,8 +18,8 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Set id
-    $mvs->ScheduleNum = $data->ScheduleNum;
-    $mvs->MgrSSN = $data->MgrSSN;
+    $mvs->scheduleNum = $data->scheduleNum;
+    $mvs->mgrSSN = $data->mgrSSN;
 
     // Delete mvs
     if ($mvs->deleteManagerViewsSchedule()) {

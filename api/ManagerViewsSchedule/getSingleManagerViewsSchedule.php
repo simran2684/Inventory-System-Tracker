@@ -14,16 +14,16 @@
     $mvs = new ManagerViewsSchedule($db);
 
     //Get MgrSSN of mvs
-    $mvs->MgrSSN = isset($_GET['MgrSSN']) ? $_GET['MgrSSN'] : die();
-    $mvs->ScheduleNum = isset($_GET['ScheduleNum']) ? $_GET['ScheduleNum'] : die();
+    $mvs->mgrSSN = isset($_GET['mgrSSN']) ? $_GET['mgrSSN'] : die();
+    $mvs->scheduleNum = isset($_GET['scheduleNum']) ? $_GET['scheduleNum'] : die();
   
     //Call getManagerViewsSchedule method
     $mvs->getManagerViewsSchedule();
 
     // Create array for mvs
     $mvs_array = array(
-        'MgrSSN' => $mvs->MgrSSN,
-        'ScheduleNum' => $mvs->ScheduleNum
+        'mgrSSN' => $mvs->mgrSSN,
+        'scheduleNum' => $mvs->scheduleNum
  
     );
 

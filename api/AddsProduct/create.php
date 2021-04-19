@@ -18,7 +18,7 @@
     // Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
-    $adds_p->adminSSN = $data->mgrSSN;
+    $adds_p->mgrSSN = $data->mgrSSN;
     $adds_p->productNum = $data->productNum;
     
     //Create the set_p

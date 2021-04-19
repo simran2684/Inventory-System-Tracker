@@ -21,11 +21,10 @@
 
     // Create array
     $clerk_arr = array(
-        'MgrSSN' => $clerk->mgrSSN,
-        'ID' => $clerk->id,
-        'YearsEmployed' => $clerk->yearsEmployed,
-        'HourlyWage' => $clerk->hourlyWage
-        
+        'mgrSSN' => $clerk->mgrSSN,
+        'id' => $clerk->id,
+        'yearsEmployed' => $clerk->yearsEmployed,
+        'hourlyWage' => $clerk->hourlyWage
     );
 
     // Make JSON

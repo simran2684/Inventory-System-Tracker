@@ -14,7 +14,7 @@
     $deliveries = new Deliveries($db);
 
     //Get id of deliveries
-    $deliveries->id = isset($_GET['invoiceNum']) ? $_GET['invoiceNum'] : die();
+    $deliveries->invoiceNum = isset($_GET['invoiceNum']) ? $_GET['invoiceNum'] : die();
 
     //Call getSingleSupplier method
     $deliveries->getSingleDelivery();
@@ -25,7 +25,7 @@
         'dateOrdered' => $deliveries->dateOrdered,
         'timeOrdered' => $deliveries->timeOrdered,
         'dateScheduled' => $deliveries->dateScheduled,
-        'timeScheduled' => $deliveries->timeScheduled,
+        'timeScheduled' => $deliveries->timeScheduled
 
     );
 

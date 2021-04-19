@@ -14,19 +14,17 @@
     $cvs = new ClerkViewsSchedule($db);
 
     //Get ClerkID of cvs
-    $cvs->clerkId = isset($_GET['ClerkID']) ? $_GET['ClerkID'] : die();
-    $cvs->scheduleNum = isset($_GET['ScheduleNum']) ? $_GET['ScheduleNum'] : die();
+    $cvs->clerkId = isset($_GET['clerkId']) ? $_GET['clerkId'] : die();
+    $cvs->scheduleNum = isset($_GET['scheduleNum']) ? $_GET['scheduleNum'] : die();
   
     //Call getSingleClerkViewsSchedule method
     $cvs->getSingleClerkViewsSchedule();
 
-    // Create array for buy
+    // Create array
     $cvs_array = array(
-        'ClerkID' => $cvs->ClerkID,
-        'ScheduleNum' => $cvs->ScheduleNum
- 
+        'clerkId' => $cvs->clerkId,
+        'scheduleNum' => $cvs->scheduleNum
     );
-
 
     //Turn into JSON code
     print_r(json_encode($cvs_array));

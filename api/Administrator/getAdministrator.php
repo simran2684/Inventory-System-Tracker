@@ -27,9 +27,9 @@
             extract($row);
 
             $admin_item = array(
-                'AdminSSN' => $adminSSN,
-                'ID' => $id,            
-                'StoreLocation' => $storeLocation
+                'adminSSN' => $adminSSN,
+                'id' => $id,            
+                'storeLocation' => $storeLocation
             );
 
             // Push to "data"

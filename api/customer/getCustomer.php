@@ -27,8 +27,8 @@
             extract($row);
 
             $customer_item = array(
-                'CustomerNum' => $customerNum,
-                'PaymentMethod' => $paymentMethod
+                'customerNum' => $customerNum,
+                'paymentMethod' => $paymentMethod
             );
 
             // Push to "data"

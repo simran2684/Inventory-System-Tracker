@@ -21,8 +21,8 @@
 
     // Create array
     $customer_arr = array(
-        'CustomerNum' => $customer->customerNum,
-        'PaymentMethod' => $customer->paymentMethod
+        'customerNum' => $customer->customerNum,
+        'paymentMethod' => $customer->paymentMethod
         
     );
 

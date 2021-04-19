@@ -12,7 +12,7 @@
     $database = new Database();
     $db = $database->connect();
 
-    / // Instantiate clerk object
+     // Instantiate clerk object
     $clerk = new Clerk($db);
  
     // decode data

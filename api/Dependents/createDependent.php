@@ -23,7 +23,7 @@
     $dependent->phoneNumber = $data->phoneNumber;
 
     // Create dependent
-    if ($dependent->createEmployee()) {
+    if ($dependent->createDependent()) {
         echo json_encode(
             array('message' => 'Dependent Created')
         );

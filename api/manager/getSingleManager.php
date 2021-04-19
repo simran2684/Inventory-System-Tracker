@@ -21,9 +21,9 @@
 
     // Create array
     $manager_arr = array(
-        'MgrSSN' => $manager->mgrSSN,
-        'ID' => $manager->id,
-        'StoreLocation' => $manager->storeLocation
+        'mgrSSN' => $manager->mgrSSN,
+        'id' => $manager->id,
+        'storeLocation' => $manager->storeLocation
         
     );
 

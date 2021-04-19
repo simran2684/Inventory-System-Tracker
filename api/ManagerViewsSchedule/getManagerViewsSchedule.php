@@ -29,8 +29,8 @@
             extract($row);
             
             $mvs_item = array(
-                'MgrSSN' => $MgrSSN,
-                'ScheduleNum' => $ScheduleNum
+                'mgrSSN' => $mgrSSN,
+                'scheduleNum' => $scheduleNum
                 
             );
             

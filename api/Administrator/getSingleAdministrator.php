@@ -21,9 +21,9 @@
 
     // Create array
     $admin_arr = array(
-        'AdminSSN' => $admin->adminSSN,
-        'ID' => $admin->id,
-        'StoreLocation' => $admin->storeLocation
+        'adminSSN' => $admin->adminSSN,
+        'id' => $admin->id,
+        'storeLocation' => $admin->storeLocation
         
     );
 

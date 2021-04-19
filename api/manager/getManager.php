@@ -27,9 +27,9 @@
             extract($row);
 
             $manager_item = array(
-                'MgrSSN' => $mgrSSN,
-                'ID' => $id,
-                'StoreLocation' => $storeLocation
+                'mgrSSN' => $mgrSSN,
+                'id' => $id,
+                'storeLocation' => $storeLocation
             );
 
             // Push to "data"

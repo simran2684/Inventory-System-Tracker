@@ -30,8 +30,7 @@
             
             $buy_item = array(
                 'productNum' => $productNum,
-                'customerNum' => $customerNum,
-                'price' => $price
+                'customerNum' => $customerNum
             );
             
             // Push to "data"

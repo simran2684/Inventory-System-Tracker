@@ -2,34 +2,32 @@
     
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Methods: DELETE');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods');
 
     include_once '../../config/Database.php';
-    include_once '../../models/ManagerViewsSchedule.php';
+    include_once '../../models/Employee.php';
     
     //Connect the Database
     $database = new Database();
     $db = $database->connect();
 
-   //Instantiate mvs object
-   $mvs = new ManagerViewsSchedule($db);
+    // Instantiate employee object
+    $employee = new Employee($db);
 
-    // Get the raw posted data
+    // decode data
     $data = json_decode(file_get_contents("php://input"));
 
-    $mvs->scheduleNum = $data->scheduleNum;
-    $mvs->mgrSSN = $data->mgrSSN;
-   
+    // Set the id for the delete
+    $employee->employeeId = $data->employeeId;
 
-
-    //Create the buy
-    if ($mvs->createManagerViewsSchedule()) {
+    // Delete employee
+    if ($employee->deleteEmployee()) {
         echo json_encode(
-            array('message' => 'Data Created')
+            array('message' => 'Employee Deleted')
         );
     } else {
         echo json_encode(
-            array('message' => 'Unable to create data')
+            array('message' => 'Unable to delete employee')
         );
     }

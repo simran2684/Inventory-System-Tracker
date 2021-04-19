@@ -20,7 +20,6 @@
 
     $buy->productNum = $data->productNum;
     $buy->customerNum = $data->customerNum;
-    $buy->price = $data->price;
 
 
     //Create the buy

@@ -29,8 +29,8 @@
             extract($row);
             
             $cvs_item = array(
-                'ClerkID' => $ClerkID,
-                'ScheduleNum' => $ScheduleNum
+                'clerkId' => $clerkId,
+                'scheduleNum' => $scheduleNum
                 
             );
             

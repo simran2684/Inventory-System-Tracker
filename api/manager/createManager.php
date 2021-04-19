@@ -19,7 +19,7 @@
     $data = json_decode(file_get_contents("php://input"));
 
     $manager->mgrSSN = $data->mgrSSN;
-    $manager->ID = $data->ID;
+    $manager->ID = $data->id;
     $manager->storeLocation = $data->storeLocation;
    
 

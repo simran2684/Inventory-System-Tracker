@@ -23,8 +23,7 @@
     // Create array for buy
     $buy_array = array(
         'productNum' => $buy->productNum,
-        'customerNum' => $buy->customerNum,
-        'price' => $buy->price
+        'customerNum' => $buy->customerNum
     );
 
 
