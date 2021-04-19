@@ -120,29 +120,5 @@
                 return false;
             }
         }
-
-
-        // Delete an customer
-        public function deleteCustomer() {
-            // Create Query
-            $query = 'DELETE FROM ' . $this->table . ' WHERE customerNum = :customerNum';
-
-            // Prepare statement
-            $stmt = $this->connect->prepare($query);
-
-            // "Clean" data
-            $this->customerNum = htmlspecialchars(strip_tags($this->customerNum));
-
-            // Bind data
-            $stmt->bindParam(':customerNum', $this->customerNum);
-
-            // Execute Query
-            if($stmt->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
         
     }

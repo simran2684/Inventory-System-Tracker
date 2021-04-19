@@ -5,8 +5,8 @@
 
         // Buy properties/attribute
 
-        public $ClerkID;
-        public $ScheduleNum;
+        public $clerkId;
+        public $scheduleNum;
       
 
         // Create the database
@@ -18,8 +18,8 @@
         public function getClerkViewsSchedule() {
             // Create query
             $query = 'SELECT
-                v.ClerkID,
-                v.ScheduleNum
+                v.clerkId,
+                v.scheduleNum
             
             FROM
                 ' . $this->table . ' v';
@@ -36,22 +36,22 @@
         //Get one cvs data
         public function getSingleClerkViewsSchedule() {
             $query = 'SELECT
-                v.ClerkID,
-                v.ScheduleNum
+                v.clerkId,
+                v.scheduleNum
 
             FROM
                 ' . $this->table . ' v
             WHERE
-                v.ClerkID = ? AND
-                v.ScheduleNum = ?
+                v.clerkId = ? AND
+                v.scheduleNum = ?
             LIMIT 0,2';
 
             // Prepare statment
             $stmt = $this->connect->prepare($query);
 
             // Bind id
-            $stmt->bindParam(1, $this->ClerkID);
-            $stmt->bindParam(2, $this->ScheduleNum);
+            $stmt->bindParam(1, $this->clerkId);
+            $stmt->bindParam(2, $this->scheduleNum);
 
             // Execute Query
             $stmt->execute();
@@ -59,8 +59,8 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
-            $this->clerkId = $row['ClerkID'];
-            $this->scheduleNum = $row['ScheduleNum'];
+            $this->clerkId = $row['clerkId'];
+            $this->scheduleNum = $row['scheduleNum'];
            
         }
 
@@ -69,16 +69,16 @@
         public function createClerkViewsSchedule() {
             $query = 'INSERT INTO ' . $this->table . '
                 SET
-                    ClerkID = :ClerkID,
-                    ScheduleNum = :ScheduleNum';
+                    clerkId = :clerkId,
+                    scheduleNum = :scheduleNum';
                     
 
             // Prepare the statement
             $stmt = $this->connect->prepare($query);
 
             // Bind data to store
-            $stmt->bindParam('ClerkID', $this->ClerkID);
-            $stmt->bindParam('ScheduleNum', $this->ScheduleNum);
+            $stmt->bindParam('clerkId', $this->clerkId);
+            $stmt->bindParam('scheduleNum', $this->scheduleNum);
            
 
             // Execute the query
@@ -92,18 +92,18 @@
 
         //Delete cvs data
         public function deleteClerkViewsSchedule() {
-            $query = 'DELETE FROM ' . $this->table . ' WHERE ClerkID = :ClerkID AND ScheduleNum = :ScheduleNum';
+            $query = 'DELETE FROM ' . $this->table . ' WHERE clerkId = :clerkId AND scheduleNum = :scheduleNum';
 
             // Prepare statement
             $stmt = $this->connect->prepare($query);
 
             // "Clean" data
-            $this->ClerkID = htmlspecialchars(strip_tags($this->ClerkID));
-            $this->ScheduleNum = htmlspecialchars(strip_tags($this->ScheduleNum));
+            $this->clerkId = htmlspecialchars(strip_tags($this->clerkId));
+            $this->scheduleNum = htmlspecialchars(strip_tags($this->scheduleNum));
 
             // Bind data
-            $stmt->bindParam('ClerkID', $this->ClerkID);
-            $stmt->bindParam('ScheduleNum', $this->ScheduleNum);
+            $stmt->bindParam('clerkId', $this->clerkId);
+            $stmt->bindParam('scheduleNum', $this->scheduleNum);
            
             // Execute Query
             if($stmt->execute()) {

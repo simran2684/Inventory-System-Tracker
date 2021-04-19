@@ -101,7 +101,7 @@
             $query = 'UPDATE ' . $this->table . '
                 SET
                     id = :id,
-                    storeLocation = :storeLocation,
+                    storeLocation = :storeLocation
                 
                 WHERE
                     adminSSN = :adminSSN';
@@ -109,17 +109,11 @@
             // Prepare statement
             $stmt = $this->connect->prepare($query);
 
-            //"Clean data"
-            $this->adminSSN = htmlspecialchars(strip_tags($this->adminSSN));
-            $this->id = htmlspecialchars(strip_tags($this->id));
-            $this->storeLocation = htmlspecialchars(strip_tags($this->storeLocation));
-
             // Bind data
             $stmt->bindParam(':adminSSN', $this->adminSSN);
             $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':storeLocation', $this->storeLocation);
      
-
             //Execute query
             if($stmt->execute()) {
                 return true;

@@ -2,7 +2,7 @@
     class Database {
         // Database Parameters
         private $host = 'localhost';
-        private $db_name = 'inventorytracker';
+        private $db_name = 'inventory';
         private $username = 'root';
         private $password = '';
         private $connect;

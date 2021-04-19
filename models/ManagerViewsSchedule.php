@@ -5,8 +5,8 @@
 
         // Buy properties/attribute
 
-        public $MgrSSN;
-        public $ScheduleNum;
+        public $mgrSSN;
+        public $scheduleNum;
       
 
         // Create the database
@@ -18,8 +18,8 @@
         public function getManagerViewsSchedule() {
             // Create query
             $query = 'SELECT
-                g.MgrSSN,
-                g.ScheduleNum
+                g.mgrSSN,
+                g.scheduleNum
             
             FROM
                 ' . $this->table . ' g';
@@ -36,22 +36,22 @@
         //Get one cvs data
         public function getSingleManagerViewsSchedule() {
             $query = 'SELECT
-                g.MgrSSN,
-                g.ScheduleNum
+                g.mgrSSN,
+                g.scheduleNum
 
             FROM
                 ' . $this->table . ' g
             WHERE
-                g.MgrSSN = ? AND
-                g.ScheduleNum = ?
+                g.mgrSSN = ? AND
+                g.scheduleNum = ?
             LIMIT 0,2';
 
             // Prepare statment
             $stmt = $this->connect->prepare($query);
 
             // Bind id
-            $stmt->bindParam(1, $this->MgrSSN);
-            $stmt->bindParam(2, $this->ScheduleNum);
+            $stmt->bindParam(1, $this->mgrSSN);
+            $stmt->bindParam(2, $this->scheduleNum);
 
             // Execute Query
             $stmt->execute();
@@ -59,8 +59,8 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
-            $this->MgrSSN = $row['MgrSSN'];
-            $this->scheduleNum = $row['ScheduleNum'];
+            $this->MgrSSN = $row['mgrSSN'];
+            $this->scheduleNum = $row['scheduleNum'];
            
         }
 
@@ -69,16 +69,16 @@
         public function createManagerViewsSchedule() {
             $query = 'INSERT INTO ' . $this->table . '
                 SET
-                    MgrSSN = :MgrSSN,
-                    ScheduleNum = :ScheduleNum';
+                    mgrSSN = :mgrSSN,
+                    scheduleNum = :scheduleNum';
                     
 
             // Prepare the statement
             $stmt = $this->connect->prepare($query);
 
             // Bind data to store
-            $stmt->bindParam('MgrSSN', $this->MgrSSN);
-            $stmt->bindParam('ScheduleNum', $this->ScheduleNum);
+            $stmt->bindParam('mgrSSN', $this->mgrSSN);
+            $stmt->bindParam('scheduleNum', $this->scheduleNum);
            
 
             // Execute the query
@@ -98,12 +98,12 @@
             $stmt = $this->connect->prepare($query);
 
             // "Clean" data
-            $this->MgrSSN = htmlspecialchars(strip_tags($this->MgrSSN));
-            $this->ScheduleNum = htmlspecialchars(strip_tags($this->ScheduleNum));
+            $this->mgrSSN = htmlspecialchars(strip_tags($this->mgrSSN));
+            $this->scheduleNum = htmlspecialchars(strip_tags($this->scheduleNum));
 
             // Bind data
-            $stmt->bindParam('MgrSSN', $this->MgrSSN);
-            $stmt->bindParam('ScheduleNum', $this->ScheduleNum);
+            $stmt->bindParam('mgrSSN', $this->mgrSSN);
+            $stmt->bindParam('scheduleNum', $this->scheduleNum);
            
             // Execute Query
             if($stmt->execute()) {

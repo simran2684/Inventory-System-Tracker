@@ -54,7 +54,7 @@
             $stmt = $this->connect->prepare($query);
 
             // Bind id
-            $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(1, $this->invoiceNum);
 
             // Execute Query
             $stmt->execute();
@@ -83,11 +83,11 @@
             $stmt = $this->connect->prepare($query);
 
             // Bind data to store
-            $stmt->bindParam('invoiceNum', $this->invoiceNum);
-            $stmt->bindParam('dateOrdered', $this->dateOrdered);
-            $stmt->bindParam('timeOrdered', $this->timeOrdered);
-            $stmt->bindParam('dateScheduled', $this->dateScheduled);
-            $stmt->bindParam('timeScheduled', $this->timeScheduled);
+            $stmt->bindParam(':invoiceNum', $this->invoiceNum);
+            $stmt->bindParam(':dateOrdered', $this->dateOrdered);
+            $stmt->bindParam(':timeOrdered', $this->timeOrdered);
+            $stmt->bindParam(':dateScheduled', $this->dateScheduled);
+            $stmt->bindParam(':timeScheduled', $this->timeScheduled);
 
             // Execute the query
             if ($stmt->execute()) {
@@ -110,12 +110,19 @@
             // Prepare the statement
             $stmt = $this->connect->prepare($query);
 
+            $this->invoiceNum = htmlspecialchars(strip_tags($this->invoiceNum));
+            $this->dateOrdered = htmlspecialchars(strip_tags($this->dateOrdered));
+            $this->timeOrdered = htmlspecialchars(strip_tags($this->timeOrdered));
+            $this->dateScheduled = htmlspecialchars(strip_tags($this->dateScheduled));
+            $this->timeScheduled = htmlspecialchars(strip_tags($this->timeScheduled));
+
+
             //Bind data
-            $stmt->bindParam('invoiceNum', $this->invoiceNum);
-            $stmt->bindParam('dateOrdered', $this->dateOrdered);
-            $stmt->bindParam('timeOrdered', $this->timeOrdered);
-            $stmt->bindParam('dateScheduled', $this->dateScheduled);
-            $stmt->bindParam('timeScheduled', $this->timeScheduled);
+            $stmt->bindParam(':invoiceNum', $this->invoiceNum);
+            $stmt->bindParam(':dateOrdered', $this->dateOrdered);
+            $stmt->bindParam(':timeOrdered', $this->timeOrdered);
+            $stmt->bindParam(':dateScheduled', $this->dateScheduled);
+            $stmt->bindParam(':timeScheduled', $this->timeScheduled);
 
             // Execute the query
             if ($stmt->execute()) {

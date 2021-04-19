@@ -7,7 +7,6 @@
 
         public $productNum;
         public $customerNum;
-        public $price;
 
         // Create the database
         public function __construct($db) {
@@ -19,8 +18,7 @@
             // Create query
             $query = 'SELECT
                 b.productNum,
-                b.customerNum,
-                b.price
+                b.customerNum
             FROM
                 ' . $this->table . ' b';
 
@@ -37,8 +35,7 @@
         public function getSingleBuy() {
             $query = 'SELECT
                 b.productNum,
-                b.customerNum,
-                b.price
+                b.customerNum
             FROM
                 ' . $this->table . ' b
             WHERE
@@ -61,7 +58,6 @@
             //Set properties
             $this->productNum = $row['productNum'];
             $this->customerNum = $row['customerNum'];
-            $this->price = $row['price'];
         }
 
 
@@ -70,8 +66,7 @@
             $query = 'INSERT INTO ' . $this->table . '
                 SET
                     productNum = :productNum,
-                    customerNum = :customerNum,
-                    price = :price';
+                    customerNum = :customerNum';
 
             // Prepare the statement
             $stmt = $this->connect->prepare($query);
@@ -79,7 +74,6 @@
             // Bind data to store
             $stmt->bindParam('productNum', $this->productNum);
             $stmt->bindParam('customerNum', $this->customerNum);
-            $stmt->bindParam('price', $this->price);
 
             // Execute the query
             if ($stmt->execute()) {
@@ -88,33 +82,6 @@
                 return false;
             }
         }
-
-
-        //Update buy data
-        public function updateBuy() {
-            $query = 'UPDATE ' . $this->table . '
-                SET
-                    price = :price
-                WHERE
-                    customerNum = :customerNum AND
-                    productNum= :productNum';
-
-            // Prepare the statement
-            $stmt = $this->connect->prepare($query);
-
-            //Bind data
-            $stmt->bindParam('productNum', $this->productNum);
-            $stmt->bindParam('customerNum', $this->customerNum);
-            $stmt->bindParam('price', $this->price);
-
-            // Execute the query
-            if ($stmt->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
 
         //Delete buy data
         public function deleteBuy() {

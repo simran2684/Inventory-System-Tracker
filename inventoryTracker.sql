@@ -1,31 +1,31 @@
 CREATE TABLE store (
-    StoreNum int(11),
-    Name varchar(50),
-    StreetName varchar(50),
-    Country varchar(50),
-    City varchar(50),
-    PostalCode varchar(50),
-    PRIMARY KEY(StoreNum)
+    storeNum int(11),
+    name varchar(50),
+    streetName varchar(50),
+    country varchar(50),
+    city varchar(50),
+    postalCode varchar(50),
+    PRIMARY KEY(storeNum)
 );
 
-INSERT INTO `store` (`StoreNum`, `Name`, `StreetName`, `Country`, `City`, `PostalCode`) VALUES
+INSERT INTO `store` (`storeNum`, `name`, `streetName`, `country`, `city`, `postalCode`) VALUES
     (1, 'CoolConvenience', '123 Sesame Street', 'Canada', 'Calgary', 'T1Y 9A9');
 
 
 CREATE TABLE employees (
-    EmployeeID varchar(6) NOT NULL,
-    Name varchar(50),
-    Position varchar(50),
-    Country varchar(50),
-    City varchar(50),
-    PostalCode varchar(50),
-    StreetName varchar(50),
-    StoreNum int(11),
-    PRIMARY KEY(EmployeeID),
-    FOREIGN KEY(StoreNum) REFERENCES Store(StoreNum)
+    employeeId varchar(6) NOT NULL,
+    name varchar(50),
+    position varchar(50),
+    country varchar(50),
+    city varchar(50),
+    postalCode varchar(50),
+    streetName varchar(50),
+    storeNum int(11),
+    PRIMARY KEY(employeeId),
+    FOREIGN KEY(storeNum) REFERENCES store(storeNum)
 );
 
-INSERT INTO `employees` (`EmployeeID`, `Name`, `Position`, `Country`, `City`, `PostalCode`, `StreetName`, `StoreNum`) VALUES 
+INSERT INTO `employees` (`employeeId`, `name`, `position`, `country`, `city`, `postalCode`, `streetName`, `storeNum`) VALUES 
    ('423097', 'Andrew Williams', 'Admin', 'Canada', 'Calgary', 'T3J4D4', '456  StreetX.', 1), 
    ('365789', 'Matthew Smith ', 'Manager',  'Canada', 'Calgary', 'T3M4D4', '56 SomeStreet.', 1 ),
    ('265078', 'Catherine Johnson', 'Clerk', 'Canada', 'Calgary', 'T5M4N6', 'StreetY', 1), 
@@ -33,51 +33,51 @@ INSERT INTO `employees` (`EmployeeID`, `Name`, `Position`, `Country`, `City`, `P
    ('287094', 'Caleb Anderson', 'Clerk', 'Canada', 'Calgary', 'T3M4N6', '72 OneTwoThree  St.', 1);
 
 CREATE TABLE manager(
-    MgrSSN varchar(10) NOT NULL,
-    ID varchar(6) NOT NULL,
-    StoreLocation varchar(50),
-    PRIMARY KEY (MgrSSN),
-    FOREIGN KEY(ID) REFERENCES employees (EmployeeID) ON DELETE CASCADE
+    mgrSSN varchar(10) NOT NULL,
+    id varchar(6) NOT NULL,
+    storeLocation varchar(50),
+    PRIMARY KEY (mgrSSN),
+    FOREIGN KEY(id) REFERENCES employees (employeeId) ON DELETE CASCADE
 );
 
-INSERT INTO `manager` (`MgrSSN`, `ID`, `StoreLocation`)
+INSERT INTO `manager` (`mgrSSN`, `id`, `storeLocation`)
 VALUES('333333333', '365789', 'Calgary');
 
 
 
 CREATE TABLE clerk(
-    MgrSSN varchar(10),
-    ID varchar(6) NOT NULL,
-    YearsEmployed int,
-    HourlyWage float,
-    PRIMARY KEY (ID),
-    FOREIGN KEY(MgrSSN) REFERENCES manager (MgrSSN) ON DELETE CASCADE
+    mgrSSN varchar(10),
+    id varchar(6) NOT NULL,
+    yearsEmployed int,
+    hourlyWage float,
+    PRIMARY KEY (id),
+    FOREIGN KEY(mgrSSN) REFERENCES manager (mgrSSN) ON DELETE CASCADE
 );
 
-INSERT INTO `clerk` (`MgrSSN`, `ID`, `HourlyWage`, `YearsEmployed`)
+INSERT INTO `clerk` (`mgrSSN`, `id`, `hourlyWage`, `yearsEmployed`)
 VALUES('333333333', '657456', 16.50, 2),
       ('333333333', '657455', 18.00, 3);
 
 
 CREATE TABLE administrator(
-	AdminSSN varchar(10),
-    ID varchar(6) NOT NULL,
-    StoreLocation varchar(50),
-    PRIMARY KEY (AdminSSN),
-    FOREIGN KEY(ID) REFERENCES employees (EmployeeID) ON DELETE CASCADE
+	adminSSN varchar(10),
+    id varchar(6) NOT NULL,
+    storeLocation varchar(50),
+    PRIMARY KEY (adminSSN),
+    FOREIGN KEY(id) REFERENCES employees (employeeId) ON DELETE CASCADE
 );
 
-INSERT INTO `administrator` (`AdminSSN`, `ID`, `StoreLocation`)
+INSERT INTO `administrator` (`adminSSN`, `id`, `storeLocation`)
 VALUES('444444444', '423097', 'Calgary');
 
 
 CREATE TABLE phoneNumber (
-    EmployeeID varchar(6) NOT NULL,
-    PhoneNum varchar(10),
-	FOREIGN KEY (EmployeeID) REFERENCES employees (EmployeeID) ON DELETE CASCADE
+    employeeId varchar(6) NOT NULL,
+    phoneNum varchar(10),
+	FOREIGN KEY (employeeId) REFERENCES employees (employeeId) ON DELETE CASCADE
 );
 
-INSERT INTO `phoneNumber`(`EmployeeID`,`PhoneNum`) VALUES
+INSERT INTO `phoneNumber`(`employeeId`,`phoneNum`) VALUES
     ('423097', '1234567890'),
     ('365789', '1234567000'),
     ('265078', '7638333890'),
@@ -88,33 +88,33 @@ INSERT INTO `phoneNumber`(`EmployeeID`,`PhoneNum`) VALUES
 
 
 CREATE TABLE dependents (
-    EmployeeID varchar(6) NOT NULL,
-    Name varchar(50),
-    PhoneNumber varchar(50),
-	PRIMARY KEY (EmployeeID, Name),
-    FOREIGN KEY(EmployeeID) REFERENCES employees(EmployeeID) ON DELETE CASCADE
+    employeeId varchar(6) NOT NULL,
+    name varchar(50),
+    phoneNumber varchar(50),
+	PRIMARY KEY (employeeId, name),
+    FOREIGN KEY(employeeId) REFERENCES employees(employeeId) ON DELETE CASCADE
 );
 
-INSERT INTO `dependents` (`EmployeeID`, `Name`, `PhoneNumber`) VALUES
+INSERT INTO `dependents` (`employeeId`, `name`, `phoneNumber`) VALUES
     ('255098', 'Wendy Williams', '1237752560'),
     ('287094', 'Mary Anderson', '1020279878'); 
 
 
 CREATE TABLE product(
-    ProductNum varchar(50),
-    Name varchar(50),
-    Brand varchar(50),
-    Category varchar(50),
-    Quantity int(11),
-    Weight float(50),
-    InventoryNum int(11),
-    Location varchar(100),
-    StorageTemp decimal(10,2),
-    PRIMARY KEY(ProductNum)
+    productNum varchar(50),
+    name varchar(50),
+    brand varchar(50),
+    category varchar(50),
+    quantity int(11),
+    weight float(50),
+    inventoryNum int(11),
+    location varchar(100),
+    storageTemp decimal(10,2),
+    PRIMARY KEY(productNum)
 );
 
 
-INSERT INTO `product` (`ProductNum`, `Name`, `Brand`, `Category`, `Quantity`, `Weight`, `InventoryNum`, `Location`, `StorageTemp`) VALUES
+INSERT INTO `product` (`productNum`, `name`, `brand`, `category`, `quantity`, `weight`, `inventoryNum`, `location`, `storageTemp`) VALUES
     ('10000', 'Water', 'Aquafina', 'Beverages', 300, 600, 5678, 'Drink_Aisle', 4),
     ('00230', 'Chocolate_milk', 'Beatrice', 'Beverages', 300, 1000 ,5678, 'Drink_Aisle', 4),
     ('20000', 'Doritos',  'Frito-Lay', 'Snacks', 100, 255, 5678, 'Snack_Aisle', 22),
@@ -124,86 +124,81 @@ INSERT INTO `product` (`ProductNum`, `Name`, `Brand`, `Category`, `Quantity`, `W
 
 
 CREATE TABLE supplier(
-    ID varchar(6) NOT NULL,
-    Name varchar(50),
-    PhoneNumber varchar(50),
-    StreetName varchar(50),
-    Country varchar(50),
-    City varchar(50),
-    PostalCode varchar(50),
-    PRIMARY KEY (ID)
+    id varchar(6) NOT NULL,
+    name varchar(50),
+    phoneNumber varchar(50),
+    streetName varchar(50),
+    country varchar(50),
+    city varchar(50),
+    postalCode varchar(50),
+    PRIMARY KEY (id)
 );
 
-INSERT INTO `supplier` (`ID`, `Name`, `PhoneNumber`, `StreetName`, `Country`, `City`, `PostalCode`) VALUES
+INSERT INTO `supplier` (`id`, `name`, `phoneNumber`, `streetName`, `country`, `city`, `postalCode`) VALUES
     ('344479', 'CompanyY', '4034034003', '123 Fakestreet Blvd.', 'Canada', 'Ottawa', 'H7Y3T3'),
     ('345678', 'CompanyX', '5678903333', '43 SomeStreet Close', 'Canada', 'Ottawa', 'H7Y8U7'),
     ('145978', 'CompanyZ', '0987443333', '99 StreetStreet Drive', 'Canada', 'Vancouver', 'E3Y8X9');
 
 
 CREATE TABLE deliveries(
-    InvoiceNum int(100) NOT NULL,
-    DateOrdered DATE,
-    TimeOrdered TIME,
-    DateScheduled DATE,
-    TimeScheduled TIME,
-    PRIMARY KEY (InvoiceNum)
+    invoiceNum int(100) NOT NULL,
+    dateOrdered DATE,
+    timeOrdered TIME,
+    dateScheduled DATE,
+    timeScheduled TIME,
+    PRIMARY KEY (invoiceNum)
 );
 
 
-INSERT INTO `deliveries` (`InvoiceNum`, `DateOrdered`, `TimeOrdered`, `DateScheduled`, `TimeScheduled`) VALUES
+INSERT INTO `deliveries` (`invoiceNum`, `dateOrdered`, `timeOrdered`, `dateScheduled`, `timeScheduled`) VALUES
     (42356, '2021-03-14', '13:20:06', '2021-03-21', '9:00:00'),
     (42357, '2021-04-15', '15:46:54', '2021-04-22', '7:00:00');
 
 
-
 CREATE TABLE schedule (
-    ScheduleNum int(100) NOT NULL,
-    DeliveryInvoiceNum int(100) NOT NULL,
-    PRIMARY KEY(ScheduleNum) 
+    scheduleNum int(100) NOT NULL,
+    deliveryInvoiceNum int(100) NOT NULL,
+    PRIMARY KEY(scheduleNum) 
 );
 
-INSERT INTO `schedule` (`ScheduleNum`, `DeliveryInvoiceNum`) VALUES
+INSERT INTO `schedule` (`scheduleNum`, `deliveryInvoiceNum`) VALUES
     (100,'42356'),
     (101,'42357');
 
-
-
 CREATE TABLE inventory (
-    InventoryNum int(100) NOT NULL,
-    StoreNum int(100) NOT NULL,
-    Capacity int(255),
-    PRIMARY KEY(InventoryNum)
+    inventoryNum int(100) NOT NULL,
+    storeNum int(100) NOT NULL,
+    capacity int(255),
+    PRIMARY KEY(inventoryNum)
 );
 
-INSERT INTO `inventory` (`InventoryNum`, `StoreNum`, `Capacity`) VALUES
+INSERT INTO `inventory` (`inventoryNum`, `storeNum`, `capacity`) VALUES
     (1, 5678, 200),
     (2, 5678, 200),
     (3, 5678, 200);
 
 CREATE TABLE customer(
-    CustomerNum int NOT NULL,
-    PaymentMethod varchar(50),
-    PRIMARY KEY (CustomerNum)
+    customerNum int NOT NULL,
+    paymentMethod varchar(50),
+    PRIMARY KEY (customerNum)
 );
 
-INSERT INTO `customer`(`CustomerNum`, `PaymentMethod`) 
-VALUES(7833, 'Cash'),
-      (1987, 'MasterCard'),
-      (1433, 'Debit'),
-      (2987, 'Visa');
-
-
+INSERT INTO `customer`(`customerNum`, `paymentMethod`) 
+VALUES(7833, 'cash'),
+      (1987, 'masterCard'),
+      (1433, 'debit'),
+      (2987, 'visa');
 
 CREATE TABLE setsPrice(
-    ProductNum varchar(8) NOT NULL,
-    AdminSSN varchar(10),
-    Price double,
-    PRIMARY KEY (ProductNum, AdminSSN),
-    FOREIGN KEY(ProductNum) REFERENCES product (ProductNum) ON DELETE CASCADE,
-    FOREIGN KEY(AdminSSN) REFERENCES administrator (AdminSSN) ON DELETE CASCADE
+    productNum varchar(8) NOT NULL,
+    adminSSN varchar(10),
+    price double,
+    PRIMARY KEY (productNum, adminSSN),
+    FOREIGN KEY(productNum) REFERENCES product (productNum) ON DELETE CASCADE,
+    FOREIGN KEY(adminSSN) REFERENCES administrator (adminSSN) ON DELETE CASCADE
 );
 
-INSERT INTO `setsPrice` (`ProductNum`, `AdminSSN`, `Price`)
+INSERT INTO `setsPrice` (`productNum`, `adminSSN`, `price`)
 VALUES('10000', '444444444', 2.50),
 	  ('00230', '444444444', 3.50),
 	  ('20000', '444444444', 5.00),
@@ -211,30 +206,29 @@ VALUES('10000', '444444444', 2.50),
 
 
 CREATE TABLE buy(
-    ProductNum varchar(8) NOT NULL,
-    CustomerNum int NOT NULL,
-    Price double,
-    PRIMARY KEY (ProductNum, CustomerNum),
-    FOREIGN KEY(ProductNum) REFERENCES product (ProductNum) ON DELETE CASCADE,
-    FOREIGN KEY(CustomerNum) REFERENCES customer (CustomerNum)
+    productNum varchar(8) NOT NULL,
+    customerNum int NOT NULL,
+    PRIMARY KEY (productNum, customerNum),
+    FOREIGN KEY(productNum) REFERENCES product (productNum) ON DELETE CASCADE,
+    FOREIGN KEY(customerNum) REFERENCES customer (customerNum) 
 );
 
 
-INSERT INTO `buy` (`CustomerNum`, `ProductNum`) 
+INSERT INTO `buy` (`customerNum`, `productNum`) 
 VALUES(7833, '10000'),
       (1987, '67570'),
       (1433, '00230'),
       (2987, '20000');
 
 CREATE TABLE addProduct(
-MgrSSN varchar(10),
-ProductNum varchar(8),
-PRIMARY KEY(MgrSSN, ProductNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager(MgrSSN) ON DELETE CASCADE,
-FOREIGN KEY (ProductNum) REFERENCES product(ProductNum) ON DELETE CASCADE
+mgrSSN varchar(10),
+productNum varchar(8),
+PRIMARY KEY(mgrSSN, productNum),
+FOREIGN KEY (mgrSSN) REFERENCES manager(mgrSSN) ON DELETE CASCADE,
+FOREIGN KEY (productNum) REFERENCES product(productNum) ON DELETE CASCADE
 );
 
-INSERT INTO `addProduct` (`MgrSSN`, `ProductNum`) VALUES
+INSERT INTO `addProduct` (`mgrSSN`, `productNum`) VALUES
 ('333333333', '20000'),
 ('333333333', '67570'),
 ('333333333', '10000'),
@@ -242,55 +236,51 @@ INSERT INTO `addProduct` (`MgrSSN`, `ProductNum`) VALUES
 
 
 CREATE TABLE updateProduct(
-MgrSSN varchar(10),
-ProductNum varchar(8),
-PRIMARY KEY(MgrSSN, ProductNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager (MgrSSN) ON DELETE CASCADE,
-FOREIGN KEY (ProductNum) REFERENCES product (ProductNum) ON DELETE CASCADE
+mgrSSN varchar(10),
+productNum varchar(8),
+PRIMARY KEY(mgrSSN, productNum),
+FOREIGN KEY (mgrSSN) REFERENCES manager (mgrSSN) ON DELETE CASCADE,
+FOREIGN KEY (productNum) REFERENCES product (productNum) ON DELETE CASCADE
 );
 
-INSERT INTO `updateProduct` (`MgrSSN`, `ProductNum`) VALUES
+INSERT INTO `updateProduct` (`mgrSSN`, `productNum`) VALUES
 ('333333333', '10000'),
 ('333333333', '00230'),
 ('333333333', '67570');
 
 
 CREATE TABLE removeProduct(
-MgrSSN varchar(10),
-ProductNum varchar(8),
-PRIMARY KEY(MgrSSN, ProductNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager (MgrSSN) ON DELETE CASCADE
+mgrSSN varchar(10),
+productNum varchar(8),
+PRIMARY KEY(mgrSSN, productNum) ,
+FOREIGN KEY (mgrSSN) REFERENCES manager (mgrSSN) ON DELETE CASCADE
 );
 
-INSERT INTO `removeProduct` (`MgrSSN`, `ProductNum`) VALUES
+INSERT INTO `removeProduct` (`mgrSSN`, `productNum`) VALUES
 ('333333333', '10002'),
 ('333333333', '99830');
 
 
 CREATE TABLE clerkViewsSchedule(
-ClerkID varchar(6) NOT NULL,
-ScheduleNum int NOT NULL, 
-PRIMARY KEY (ClerkID, ScheduleNum),
-FOREIGN KEY (ClerkID) REFERENCES employees(EmployeeID) ON DELETE CASCADE,
-FOREIGN KEY (ScheduleNum) REFERENCES schedule(ScheduleNum) ON DELETE CASCADE
+clerkId varchar(6) NOT NULL,
+scheduleNum int NOT NULL, 
+PRIMARY KEY (clerkId, scheduleNum),
+FOREIGN KEY (clerkId) REFERENCES employees(employeeId) ON DELETE CASCADE,
+FOREIGN KEY (scheduleNum) REFERENCES schedule(scheduleNum) ON DELETE CASCADE
 );
 
-INSERT INTO `clerkViewsSchedule` (ClerkID, ScheduleNum) VALUES
+INSERT INTO `clerkViewsSchedule` (clerkID, scheduleNum) VALUES
 ('265078', 100),
 ('255098', 100);
 
 CREATE TABLE mgrViewsSchedule(
-MgrSSN varchar(10) NOT NULL,
-ScheduleNum int NOT NULL,
-PRIMARY KEY (MgrSSN, ScheduleNum),
-FOREIGN KEY (MgrSSN) REFERENCES manager(MgrSSN) ON DELETE CASCADE,
-FOREIGN KEY (ScheduleNum) REFERENCES schedule(ScheduleNum) ON DELETE CASCADE
+mgrSSN varchar(10) NOT NULL,
+scheduleNum int NOT NULL,
+PRIMARY KEY (mgrSSN, scheduleNum),
+FOREIGN KEY (mgrSSN) REFERENCES manager(mgrSSN) ON DELETE CASCADE,
+FOREIGN KEY (scheduleNum) REFERENCES schedule(scheduleNum) ON DELETE CASCADE
 );
 
-INSERT INTO `mgrViewsSchedule` (`MgrSSN`, `ScheduleNum`) VALUES
+INSERT INTO `mgrViewsSchedule` (`mgrSSN`, `scheduleNum`) VALUES
 ('333333333', 100),
 ('333333333', 101);
-
-
-
-

@@ -5,7 +5,7 @@
         private $table = 'employees';
 
         //Employee Properties/Attributes
-        public $employeeid;
+        public $employeeId;
         public $name;
         public $position;
         public $country;
@@ -100,15 +100,6 @@
             // Prepare Statment
             $stmt = $this->connect->prepare($query);
 
-            //"Clean data"
-            $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
-            $this->name = htmlspecialchars(strip_tags($this->name));
-            $this->country = htmlspecialchars(strip_tags($this->country));
-            $this->city = htmlspecialchars(strip_tags($this->city));
-            $this->postalCode = htmlspecialchars(strip_tags($this->postalCode));
-            $this->streetName = htmlspecialchars(strip_tags($this->streetName));
-            $this->storeNum = htmlspecialchars(strip_tags($this->storeNum));
-
 
             // Bind data
             $stmt->bindParam(':employeeId', $this->employeeId);
@@ -146,13 +137,13 @@
             $stmt = $this->connect->prepare($query);
 
             // "Clean Data
-            $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
-            $this->name = htmlspecialchars(strip_tags($this->name));
-            $this->country = htmlspecialchars(strip_tags($this->country));
-            $this->city = htmlspecialchars(strip_tags($this->city));
-            $this->postalCode = htmlspecialchars(strip_tags($this->postalCode));
-            $this->streetName = htmlspecialchars(strip_tags($this->streetName));
-            $this->storeNum = htmlspecialchars(strip_tags($this->storeNum));
+            // $this->employeeId = htmlspecialchars(strip_tags($this->employeeId));
+            // $this->name = htmlspecialchars(strip_tags($this->name));
+            // $this->country = htmlspecialchars(strip_tags($this->country));
+            // $this->city = htmlspecialchars(strip_tags($this->city));
+            // $this->postalCode = htmlspecialchars(strip_tags($this->postalCode));
+            // $this->streetName = htmlspecialchars(strip_tags($this->streetName));
+            // $this->storeNum = htmlspecialchars(strip_tags($this->storeNum));
 
             // Bind data
             $stmt->bindParam(':employeeId', $this->employeeId);

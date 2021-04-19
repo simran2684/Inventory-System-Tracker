@@ -86,25 +86,25 @@
 
         }
 
-         // Create Product
-         public function createProduct() {
-            //Create query
-            $query = 'INSERT INTO ' . $this->table . ' 
+
+        // Function to create product
+        public function createProduct() {
+            $query = 'INSERT INTO ' . $this->table . '
                 SET
-                    productNum = :productNum,
-                    name = :name,
-                    brand = :brand,
-                    category = :category,
-                    quantity = :quantity,
-                    weight = :weight,
-                    inventoryNum = :inventoryNum,
-                    location = :location,
-                    storageTemp = :storageTemp';
-                    
-            // Prepare Statment
+                productNum = :productNum,
+                name = :name,
+                brand = :brand,
+                category = :category,
+                quantity = :quantity,
+                weight = :weight,
+                inventoryNum = :inventoryNum,
+                location = :location,
+                storageTemp = :storageTemp';
+
+            // Prepare the statement
             $stmt = $this->connect->prepare($query);
 
-            // Bind data
+            // Bind data to store
             $stmt->bindParam(':productNum', $this->productNum);
             $stmt->bindParam(':name', $this->name);
             $stmt->bindParam(':brand', $this->brand);
@@ -115,8 +115,8 @@
             $stmt->bindParam(':location', $this->location);
             $stmt->bindParam(':storageTemp', $this->storageTemp);
 
-            //Execute query
-            if($stmt->execute()) {
+            // Execute the query
+            if ($stmt->execute()) {
                 return true;
             } else {
                 return false;

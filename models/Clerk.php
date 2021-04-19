@@ -38,7 +38,7 @@
         public function getSingleClerk() {
             $query = 'SELECT
                 k.mgrSSN,
-                k.ID,
+                k.id,
                 k.yearsEmployed,
                 k.hourlyWage
             FROM
