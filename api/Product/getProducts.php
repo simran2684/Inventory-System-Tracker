@@ -29,15 +29,15 @@ if($num > 0){
         extract($row);
 
         $product_item = array(
-            'ProductNum' => $productNum,
-            'Name' => $name,
-            'Brand' => $brand,
-            'Category' => $category,
-            'Quantity' => $quantity,
-            'Weight' => $weight,
-            'InventoryNum' => $inventoryNum,
-            'Location' => $location,
-            'StorageTemp' => $storageTemp
+            'productNum' => $productNum,
+            'name' => $name,
+            'brand' => $brand,
+            'category' => $category,
+            'quantity' => $quantity,
+            'weight' => $weight,
+            'inventoryNum' => $inventoryNum,
+            'location' => $location,
+            'storageTemp' => $storageTemp
         );
 
         // Push to "data"

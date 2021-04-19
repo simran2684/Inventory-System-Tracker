@@ -1,4 +1,5 @@
-<?php
+
+    <?php
     
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
@@ -12,7 +13,7 @@
     $database = new Database();
     $db = $database->connect();
 
-    // Instantiate product object
+    // Create new deliveries object
     $product = new Product($db);
 
     // Get the raw posted data
@@ -28,13 +29,14 @@
     $product->location = $data->location;
     $product->storageTemp = $data->storageTemp;
 
-    // Create product
-    if ($product->createproduct()) {
+
+    //Create the product
+    if ($product->createProduct()) {
         echo json_encode(
-            array('message' => 'product Created')
+            array('message' => 'Product Created')
         );
     } else {
         echo json_encode(
-            array('message' => 'product Not Created')
+            array('message' => 'Unable to create Product')
         );
     }

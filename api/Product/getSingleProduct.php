@@ -21,15 +21,15 @@
 
     // Create array
     $product_arr = array(
-        'ProductNum' => $product->productNum,
-        'Name' => $product->name,
-        'Brand' => $product->brand,
-        'Category' => $product->category,
-        'Quantity' => $product->quantity,
-        'Weight' => $product->weight,
-        'InventoryNum' => $product->inventoryNum,
-        'Location' => $product->location,
-        'StorageTemp' => $product->storageTemp
+        'productNum' => $product->productNum,
+        'name' => $product->name,
+        'brand' => $product->brand,
+        'category' => $product->category,
+        'quantity' => $product->quantity,
+        'weight' => $product->weight,
+        'inventoryNum' => $product->inventoryNum,
+        'location' => $product->location,
+        'storageTemp' => $product->storageTemp
     );
 
     // Make JSON
