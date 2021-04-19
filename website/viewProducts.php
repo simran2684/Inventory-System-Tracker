@@ -9,10 +9,10 @@
   $database = new Database();
   $db = $database->connect();
 
-  // Instantiate employee object
+  // Instantiate product object
   $product = new Product($db);
 
-  // Get employee query
+  // product query
   $result = $product->getProducts();
   ?>
 
@@ -58,12 +58,12 @@
            <td class="attribute"><?php echo $row['storageTemp'];?></td> 
            <td> 
             <div>
-              <a href="updateProduct.php?productNum=<?php echo $row["productNum"];?>"?>Update</a>
+              <a class="link_button" href="updateProduct.php?productNum=<?php echo $row["productNum"];?>"?>Update</a>
             </div>
           </td>
           <td> 
            <div>
-              <a href="updateProduct.php?productNum=<?php echo $row["productNum"];?>"?>Delete</a>
+              <a class="link_button" href="deleteProduct.php?productNum=<?php echo $row["productNum"];?>"?>Delete</a>
             </div>
           </td> 
         </tr>

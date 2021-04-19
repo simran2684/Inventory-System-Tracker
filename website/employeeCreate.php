@@ -50,7 +50,7 @@
         </div>
          <div>
       <!-- <button class="btns">Submit</button> -->
-      <input type="submit" name="submit" value="Submit Info">
+      <input class="btns" type="submit" name="submit" value="Submit Info">
 
       <?php
       if(array_key_exists("submit", $_GET)){

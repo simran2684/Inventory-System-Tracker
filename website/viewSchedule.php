@@ -4,16 +4,16 @@
   header('Content-Type: text/html');
 
   include_once '../config/Database.php';
-  include_once '../models/Schedule.php';
+  include_once '../models/Deliveries.php';
 
   $database = new Database();
   $db = $database->connect();
 
-  // Instantiate employee object
-  $schedule = new Schedule($db);
+  // Instantiate schedule object
+  $schedule = new Deliveries($db);
 
   // Get employee query
-  $result = $schedule->getSchedule();
+  $result = $schedule->getDeliveries();
 
   //$row = $result->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -26,7 +26,7 @@
 </head>
 
 <body>
-  <h3> June 9 - June 15</h3>
+  <!-- <h3> June 9 - June 15</h3> -->
   <div>
     <button class = "backButton" onclick="window.location.href = 'scheduleMain.php'">Back</button>
   </div>
@@ -34,21 +34,32 @@
     <table class="scheduleTable">
       <thead>
         <tr>
-          <th>Schedule Number</th>
-          <th>Delivery Details</th>
+          <th>Invoice Number</th>
+          <th>Date Ordered</th>
+          <th>Time Ordered</th>
+          <th>Date Scheduled</th>
+          <th>Time Scheduled</th>
         </tr>
       </thead>
       <tbody>
         <?php
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             //extract($row);
         ?>
         <tr>
-          <td class="attribute"><?php echo $row['scheduleNum'];?></td>
-           <td class="attribute"><?php echo $row['deliveryInvoiceNum'];?></td>
+          <td class="attribute"><?php echo $row['invoiceNum'];?></td>
+           <td class="attribute"><?php echo $row['dateOrdered'];?></td>
+           <td class="attribute"><?php echo $row['timeOrdered'];?></td>
+           <td class="attribute"><?php echo $row['dateScheduled'];?></td>
+           <td class="attribute"><?php echo $row['timeScheduled'];?></td>
           <td> 
             <div>
-               <button class="btns2" onclick="window.location.href = 'updateInventory.php'">Update Quantity</button>
+            <a href="updatedDelivery.php?invoiceNum=<?php echo $row["invoiceNum"];?>"?>Update</a>
+            </div>
+          </td>
+          <td> 
+            <div>
+            <a href="deleteDelivery.php?invoiceNum=<?php echo $row["invoiceNum"];?>"?>Delete</a>
             </div>
           </td>
         </tr>

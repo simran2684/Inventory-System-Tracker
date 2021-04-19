@@ -29,6 +29,7 @@
   </head>
     <body>
       <h1>Update Product</h1>
+      <button class = "backButton" onclick="window.location.href = 'viewProducts.php'">Back</button>
       <form class="centerText">
         <div>
           <label for = "productNum", class = "form_2"> Product Number: </label>
@@ -64,6 +65,7 @@
            <button type="button" class="btns" onclick="window.location.href = 'viewProducts.php'">Return</button>
            <?php
 
+            // gets all the values from the input fields and assigns them to product
             if(array_key_exists("submit", $_GET)){
 
                 $product->productNum = $_GET['productNum'];
@@ -76,7 +78,7 @@
                 $product->location =  $_GET['location'];
                 $product->storageTemp =  $_GET['storageTemp'];
 
-                // Create product
+                // update product (PUT)
                 if ($product->updateProduct()) {
                     echo "product Updated";
         

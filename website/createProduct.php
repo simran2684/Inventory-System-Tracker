@@ -23,6 +23,9 @@
   </head>
     <body>
       <h1>Add Product</h1>
+      <div>
+      <button class = "backButton" onclick="window.location.href = 'productMain.php'">Back</button>
+      </div>
       <form class="centerText">
         <div>
           <label for = "productNum", class = "form_2"> Product Number: </label>
@@ -45,7 +48,7 @@
           <input type = "number" name="storageTemp"> <br>
           </div>
           <div>
-        <input type="submit" name="submit" value="submit Info">
+        <input class="btns" type="submit" name="submit" value="submit Info">
       <?php
 
 if(array_key_exists("submit", $_GET)){
@@ -60,15 +63,11 @@ if(array_key_exists("submit", $_GET)){
     $product->location =  $_GET['location'];
     $product->storageTemp =  $_GET['storageTemp'];
 
-    // Create product
+    // Create product (POST)
     if ($product->createproduct()) {
-        echo json_encode(
-            array('message' => 'product Created')
-        );
+        echo "Product Created";
     } else {
-        echo json_encode(
-            array('message' => 'product Not Created')
-        );
+        echo "Product Created";
     }
   }
 
