@@ -7,47 +7,46 @@ h1 {
 }
 
 .btns {
-  margin:0 auto;
-  display:block;
+  margin: 0 auto;
+  display: block;
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 19px;
   width: 110px;
   font-family: Arial;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
 }
 
 .btns_l {
-  margin:0 auto;
-  display:block;
+  margin: 0 auto;
+  display: block;
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 19px;
   width: 120px;
   font-family: Arial;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
 }
 
 .btnsMain {
-  margin:0 auto;
-  display:block;
+  margin: 0 auto;
+  display: block;
   margin-top: 20px;
   margin-bottom: 30px;
   font-size: 22px;
   width: 130px;
   font-family: Arial;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
 }
 
-.centerText{
+.centerText {
   text-align: center;
   margin-top: 20px;
   transform: translateX(20);
 }
 
-
 body {
-background-color: #D1EEEE;
+  background-color: #deeeee;
 }
 
 .form_l {
@@ -88,7 +87,7 @@ background-color: #D1EEEE;
   font-family: Arial;
 }
 
-.inventoryTable{
+.inventoryTable {
   margin-left: auto;
   margin-right: auto;
   font-family: Arial;
@@ -101,14 +100,14 @@ background-color: #D1EEEE;
 }
 
 .btns2 {
-  margin:0 auto;
-  display:block;
+  margin: 0 auto;
+  display: block;
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 10px;
   width: 50px;
   font-family: Arial;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
 }
 
 .backButton {
@@ -119,22 +118,22 @@ background-color: #D1EEEE;
 }
 
 .attribute {
-border: 1px solid black;
-text-align: center;
+  border: 1px solid black;
+  text-align: center;
 }
 
 .link_button {
   margin-right: 10px;
 }
 
-table{
+table {
   border-collapse: collapse;
 }
 
-th{
+th {
   border: 1px solid black;
 }
 
-label{
+label {
   font-family: Arial;
 }
